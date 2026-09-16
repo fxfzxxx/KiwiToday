@@ -1,0 +1,32 @@
+# Sydney, because Railway has no Oceania region and Auckland→Singapore is ~160ms.
+# The database (Supabase ap-southeast-2) sits in the same city, so the crawl's
+# many small writes are not paying a round-the-world trip each.
+app = "kiwitoday-worker"
+primary_region = "syd"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  NODE_ENV = "production"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # Never scale to zero: this process owns the cron schedule. A sleeping worker
+  # is a feed that quietly stops updating.
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "20s"
+    interval = "30s"
+    method = "GET"
+    path = "/health"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
