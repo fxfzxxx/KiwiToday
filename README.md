@@ -85,6 +85,19 @@ pnpm build
 
 ## Adding a source
 
+**Probe it first.** Adding a source is a research question — does the site
+publish schema.org markup (free, deterministic) or does it need LLM extraction
+(costs money, needs guards)? Don't guess:
+
+```bash
+pnpm probe https://www.aucklandnz.com/events/all-events --city auckland
+```
+
+It reports the JSON-LD it found, what would be normalised out of it, how many
+events have coordinates, and — if the source is usable — the exact `INSERT` to
+paste. It distinguishes "no markup" from "I was blocked", because those lead to
+opposite decisions.
+
 Most NZ venues and councils publish JSON-LD for Google, so a new source is
 usually a row, not code:
 
@@ -99,22 +112,33 @@ INSERT INTO sources (slug, name, kind, attribution, config) VALUES (
 Sources with a real API get an adapter in `apps/worker/src/sources/` implementing
 `SourceAdapter`, registered in `pipeline/run.ts`.
 
+Migration `0002` seeds seven NZ tourism/city sites as **disabled** candidates.
+They are unverified — several sit behind bot protection, and only four of the
+seven URLs are confirmed to exist. Probe each one before enabling it.
+
 **Note on Eventbrite:** its public event-search API was withdrawn in 2020 —
 third parties cannot retrieve other organisers' events. Not worth attempting.
 
 ## Status
 
-Working: schema + migrations, dedup matcher (tested), Eventfinda adapter,
-generic JSON-LD adapter, ingestion pipeline with review queue, hourly scheduler,
-SSR feed, MapLibre map with heatmap + clustering, bilingual UI, demo fallback.
+Working: schema + migrations, dedup matcher (tested), Eventfinda and
+Ticketmaster adapters, generic JSON-LD adapter, source probe, ingestion pipeline
+with review queue, hourly scheduler, SSR feed, MapLibre map with heatmap +
+clustering, bilingual UI, demo fallback. 40 unit tests.
 
 Not built yet:
-- **The Eventfinda field mapping is unverified** against a live response — their
-  docs were unreachable from this environment. Run the `--dry-run` above with
-  your key and correct `apps/worker/src/sources/eventfinda.ts` if needed.
-- Ticketmaster adapter (source row is seeded, adapter isn't written).
+- **Neither API field mapping is verified** against a live response — both
+  sites are unreachable from the environment this was built in. Run
+  `--dry-run` with your keys and correct
+  `apps/worker/src/sources/{eventfinda,ticketmaster}.ts` if needed. This is the
+  first thing to do; everything else is downstream of having real rows.
+- The seven candidate sources in migration `0002` are unprobed and disabled.
 - Chinese titles/summaries via Claude Haiku (`title_zh`/`summary_zh` columns and
   `enriched_at` exist; nothing writes them yet).
+- LLM extraction for sites with neither an API nor JSON-LD. Only worth building
+  once the probe shows how many NZ sources actually fall in that bucket.
+- Nothing alerts when a source silently stops returning events. `ingest_runs`
+  records every run; there is no monitor reading it.
 - Meilisearch. Search is `ILIKE` for now — fine at this size, but Postgres FTS
   does not tokenise Chinese, so this needs replacing before search matters.
 - Cover images still hotlink from sources; they should be proxied through R2.

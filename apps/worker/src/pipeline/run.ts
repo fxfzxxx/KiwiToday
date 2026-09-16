@@ -1,5 +1,6 @@
 import { db, finishRun, getSourceConfig, markMissingRecordsGone, startRun } from "@kiwi/db";
 import { eventfindaAdapter } from "../sources/eventfinda";
+import { ticketmasterAdapter } from "../sources/ticketmaster";
 import { makeJsonLdAdapter } from "../sources/jsonld";
 import type { SourceAdapter } from "../sources/types";
 import { emptyStats, ingestListing, type IngestStats } from "./ingest";
@@ -7,6 +8,7 @@ import { emptyStats, ingestListing, type IngestStats } from "./ingest";
 /** Adapters we ship. Anything not listed here is treated as a JSON-LD source. */
 const ADAPTERS: Record<string, SourceAdapter> = {
   eventfinda: eventfindaAdapter,
+  ticketmaster: ticketmasterAdapter,
 };
 
 export function adapterFor(slug: string): SourceAdapter {
