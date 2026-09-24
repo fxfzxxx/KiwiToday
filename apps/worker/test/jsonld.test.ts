@@ -1,6 +1,20 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { extractJsonLdNodes, normalizeJsonLdEvent } from "../src/sources/jsonld";
+import { extractJsonLdNodes, normalizeJsonLdEvent, makeJsonLdAdapter } from "../src/sources/jsonld";
+
+test("timezone-less NZ listings have the same instant on every server", () => {
+  const listing = normalizeJsonLdEvent({ name: "Concert", startDate: "2026-03-14T20:00:00" },
+    { sourceSlug: "venue", pageUrl: "https://example.nz" });
+  assert.equal(listing?.startsAt.toISOString(), "2026-03-14T07:00:00.000Z");
+});
+
+test("a failed seed aborts ingestion instead of allowing missing-record cleanup", async (t) => {
+  t.mock.method(globalThis, "fetch", async () => new Response("unavailable", { status: 503 }));
+  const iterator = makeJsonLdAdapter("venue").fetchAll({
+    config: { seeds: ["https://example.nz"] }, horizonDays: 120, log: () => {},
+  });
+  await assert.rejects(async () => { for await (const batch of iterator) void batch; }, /503/);
+});
 
 const PAGE = `<!doctype html><html><head>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Venue"}</script>

@@ -159,8 +159,8 @@ export function Shell({
         {isDemo ? (
           <p className="bg-coral/10 px-4 py-1.5 text-[12px] text-ink">
             {locale === "zh"
-              ? "演示数据 — 设置 DATABASE_URL 并运行 pnpm ingest 后即为真实活动。"
-              : "Demo data — set DATABASE_URL and run pnpm ingest to see real events."}
+              ? "当前展示演示活动，仅供体验。"
+              : "Showing sample events for demonstration."}
           </p>
         ) : null}
       </header>

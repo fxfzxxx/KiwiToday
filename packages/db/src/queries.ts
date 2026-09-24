@@ -100,7 +100,7 @@ export async function findEvents(
          q.bbox
            ? sql`AND e.geom && ST_MakeEnvelope(${q.bbox[0]}, ${q.bbox[1]}, ${q.bbox[2]}, ${q.bbox[3]}, 4326)::geography`
            : city
-             ? sql`AND ST_DWithin(e.geom, ST_MakePoint(${city.lng}, ${city.lat})::geography, ${city.radiusKm * 1000})`
+             ? sql`AND (e.geom IS NULL OR ST_DWithin(e.geom, ST_MakePoint(${city.lng}, ${city.lat})::geography, ${city.radiusKm * 1000}))`
              : sql``
        }
        ${cursor ? sql`AND (e.starts_at, e.id) > (${cursor.startsAt}, ${cursor.id}::uuid)` : sql``}

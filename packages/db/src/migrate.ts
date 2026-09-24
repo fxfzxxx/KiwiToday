@@ -7,7 +7,7 @@
  */
 import { readdir, readFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { closeDb, db } from "./client";
 
 const MIGRATIONS_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "migrations");
@@ -38,7 +38,7 @@ export async function migrate(): Promise<void> {
   process.stdout.write(ran ? `✓ applied ${ran} migration(s)\n` : "✓ schema up to date\n");
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   migrate()
     .then(closeDb)
     .catch(async (err) => {

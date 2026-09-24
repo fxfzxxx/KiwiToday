@@ -57,7 +57,8 @@ export const eventQuerySchema = z.object({
     .optional()
     .transform((v) => (v ? (v.split(",").map(Number) as [number, number, number, number]) : undefined)),
   q: z.string().trim().min(1).max(120).optional(),
-  free: z.coerce.boolean().optional(),
+  free: z.union([z.boolean(), z.enum(["true", "false"])]).optional()
+    .transform((v) => v === undefined ? undefined : v === true || v === "true"),
   limit: z.coerce.number().int().min(1).max(200).default(60),
   cursor: z.string().optional(),
 });

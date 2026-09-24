@@ -6,7 +6,8 @@
  */
 import { createServer, type Server } from "node:http";
 import PgBoss from "pg-boss";
-import { closeDb, db } from "@kiwi/db";
+import { closeDb, db, findEvents } from "@kiwi/db";
+import { eventQuerySchema } from "@kiwi/core";
 import { runSource } from "./pipeline/run";
 
 const QUEUE = "ingest-source";
@@ -54,6 +55,31 @@ async function main() {
 /** Fly's health check hits /health; Node's built-in http is enough for one route. */
 function serveHealth(port: number, boss: PgBoss): Server {
   const server = createServer(async (req, res) => {
+    const url = new URL(req.url ?? "/", "http://localhost");
+    if (url.pathname === "/api/events") {
+      res.setHeader("content-type", "application/json");
+      if (req.method !== "GET") {
+        res.writeHead(405, { Allow: "GET" });
+        res.end(JSON.stringify({ error: "method not allowed" }));
+        return;
+      }
+      const parsed = eventQuerySchema.safeParse(Object.fromEntries(url.searchParams));
+      if (!parsed.success) {
+        res.writeHead(400);
+        res.end(JSON.stringify({ error: "invalid query", issues: parsed.error.issues }));
+        return;
+      }
+      try {
+        const page = await findEvents(parsed.data);
+        res.writeHead(200, { "cache-control": "public, max-age=60" });
+        res.end(JSON.stringify({ ...page, total: null, demo: false }));
+      } catch (err) {
+        console.error("findEvents failed", err);
+        res.writeHead(503, { "cache-control": "no-store" });
+        res.end(JSON.stringify({ error: "events temporarily unavailable" }));
+      }
+      return;
+    }
     if (req.url === "/health") {
       try {
         const queued = await boss.getQueueSize(QUEUE);
@@ -61,7 +87,8 @@ function serveHealth(port: number, boss: PgBoss): Server {
         res.end(JSON.stringify({ ok: true, queued }));
       } catch (err) {
         res.writeHead(503, { "content-type": "application/json" });
-        res.end(JSON.stringify({ ok: false, error: String(err) }));
+        console.error("health check failed", err);
+        res.end(JSON.stringify({ ok: false }));
       }
       return;
     }

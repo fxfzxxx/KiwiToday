@@ -1,5 +1,6 @@
 import { CITIES, eventQuerySchema, getCity, type KiwiEvent } from "@kiwi/core";
-import { findEvents } from "@kiwi/db";
+import { hasEventBackend, loadEventPage } from "@/lib/events";
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SAMPLE_EVENTS } from "@/lib/sample";
 import { filterSample } from "@/lib/filter-sample";
@@ -25,22 +26,27 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
 }
 
 async function loadEvents(sp: Record<string, string | string[] | undefined>) {
-  const query = eventQuerySchema.parse({
+  const parsed = eventQuerySchema.safeParse({
     city: typeof sp.city === "string" ? sp.city : "auckland",
     date: typeof sp.date === "string" ? sp.date : "week",
     category: typeof sp.category === "string" ? sp.category : undefined,
     limit: 60,
   });
+  if (!parsed.success) notFound();
+  const query = parsed.data;
 
-  if (!process.env.DATABASE_URL) {
+  if (!hasEventBackend()) {
+    if (process.env.NODE_ENV === "production" && process.env.DEMO_MODE !== "true") {
+      throw new Error("Configure API_BASE_URL or explicitly enable DEMO_MODE");
+    }
     return { events: filterSample(SAMPLE_EVENTS, query), demo: true, query };
   }
   try {
-    const { events } = await findEvents(query);
+    const { events } = await loadEventPage(query);
     return { events, demo: false, query };
   } catch (err) {
-    console.error("SSR findEvents failed, falling back to demo data", err);
-    return { events: filterSample(SAMPLE_EVENTS, query), demo: true, query };
+    console.error("SSR findEvents failed", err);
+    throw err;
   }
 }
 

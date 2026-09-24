@@ -9,7 +9,7 @@
  * Configure per source:
  *   { "seeds": ["https://example.nz/whats-on"], "defaultCity": "auckland" }
  */
-import { inferCategory, resolveCity, type NormalizedListing } from "@kiwi/core";
+import { inferCategory, resolveCity, parseNzLocal, type NormalizedListing } from "@kiwi/core";
 import type { FetchContext, SourceAdapter } from "./types";
 
 const LD_RE = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
@@ -65,15 +65,11 @@ export function normalizeJsonLdEvent(
   const startRaw = str(node.startDate);
   if (!title || !startRaw) return null;
 
-  // JSON-LD startDate is ISO 8601 and usually carries an offset. When it does
-  // not, it is a local NZ time — but we cannot tell those apart here, so trust
-  // the string and let Date do it; parseNzLocal is used only for sources we
-  // know publish naive local time.
-  const startsAt = new Date(startRaw);
-  if (Number.isNaN(startsAt.getTime())) return null;
+  const startsAt = parseNzLocal(startRaw);
+  if (!startsAt || Number.isNaN(startsAt.getTime())) return null;
 
   const endRaw = str(node.endDate);
-  const endsAt = endRaw ? new Date(endRaw) : null;
+  const endsAt = parseNzLocal(endRaw);
 
   const location = (node.location ?? null) as Record<string, unknown> | null;
   const geo = (location?.geo ?? null) as Record<string, unknown> | null;
@@ -140,11 +136,12 @@ export function makeJsonLdAdapter(slug: string): SourceAdapter {
             headers: { "user-agent": "KiwiTodayBot/0.1 (+https://kiwitoday.nz/bot)" },
             signal: AbortSignal.timeout(20_000),
           });
-          if (!res.ok) { ctx.log(`${slug}: ${res.status} for ${seed}`); continue; }
+          if (!res.ok) throw new Error(`${slug}: ${res.status} for ${seed}`);
           html = await res.text();
         } catch (err) {
           ctx.log(`${slug}: fetch failed for ${seed}`, { err: String(err) });
-          continue;
+          // Abort the run: a partial crawl must not retire unseen records.
+          throw err;
         }
 
         const listings = extractJsonLdNodes(html)
