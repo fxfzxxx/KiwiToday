@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import type { VenueSnapshot } from "@kiwi/core";
 import snapshotData from "@/data/venue-snapshot.json";
 
@@ -31,7 +32,7 @@ export default async function VenueEventPage({ params }: { params: Promise<{ id:
   return <div className="min-h-screen bg-paper text-ink">
     <header className="border-b border-line bg-white/90 backdrop-blur">
       <div className="flex flex-wrap items-center gap-3 px-4 py-2.5">
-        <div className="flex items-baseline gap-2"><a href="/" className="text-[17px] font-bold tracking-tight hover:text-coral">KiwiToday</a><span className="hidden text-[12px] text-ink-soft sm:inline">新西兰本地活动</span></div>
+        <div className="flex items-center gap-2.5"><a href="/" aria-label="返回 KiwiToday 首页" className="flex items-center gap-2"><Image src="/brand/kiwitoday-logo-light.png" alt="" width={36} height={36} className="h-9 w-9 rounded-lg" /><span className="text-[17px] font-bold tracking-tight hover:text-coral">KiwiToday</span></a><span className="hidden text-[12px] text-ink-soft sm:inline">新西兰本地活动</span></div>
         <span className="rounded-lg border border-line bg-white px-2.5 py-1.5 text-[13px] font-medium">Auckland</span>
         <a href="/" className="rounded-lg border border-line bg-white px-2.5 py-1.5 text-[12px] font-medium transition hover:border-ink/30">活动地图</a>
         <a href={`/?venue=${event.venueSlug}`} className="rounded-lg bg-ink px-2.5 py-1.5 text-[12px] font-medium text-white">{venue?.name ?? "场馆活动"}</a>

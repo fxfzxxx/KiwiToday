@@ -1,8 +1,8 @@
-import { bucketToRange, type DateBucket, type KiwiEvent, type ParsedEventQuery } from "@kiwi/core";
+import { dateFilterToRange, type KiwiEvent, type ParsedEventQuery } from "@kiwi/core";
 
 /** Apply the public event-query semantics to an in-memory event collection. */
 export function filterEvents(events: KiwiEvent[], q: ParsedEventQuery): KiwiEvent[] {
-  const range = bucketToRange(q.date as DateBucket);
+  const range = dateFilterToRange(q.date);
   const needle = q.q?.toLowerCase();
 
   return events

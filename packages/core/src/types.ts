@@ -56,7 +56,14 @@ export const eventQuerySchema = z.object({
   city: z.enum(CITY_SLUGS as [string, ...string[]]).optional(),
   /** Canonical venue slug selected from the venue directory. */
   venue: z.string().trim().regex(/^[a-z0-9-]+$/).max(80).optional(),
-  date: z.enum(DATE_BUCKET_SLUGS as [string, ...string[]]).default("week"),
+  date: z.union([
+    z.enum(DATE_BUCKET_SLUGS as [string, ...string[]]),
+    z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((value) => {
+      const [year, month, day] = value.split("-").map(Number);
+      const parsed = new Date(Date.UTC(year!, month! - 1, day!));
+      return parsed.getUTCFullYear() === year && parsed.getUTCMonth() === month! - 1 && parsed.getUTCDate() === day;
+    }, "Invalid calendar date"),
+  ]).default("week"),
   category: z.enum(CATEGORY_SLUGS as [string, ...string[]]).optional(),
   /** Map viewport: minLng,minLat,maxLng,maxLat */
   bbox: z

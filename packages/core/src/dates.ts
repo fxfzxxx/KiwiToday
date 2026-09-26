@@ -92,6 +92,17 @@ export function bucketToRange(bucket: DateBucket, now: Date = new Date()): Range
   }
 }
 
+/** Resolve either a relative date chip or an exact YYYY-MM-DD calendar day. */
+export function dateFilterToRange(value: string, now: Date = new Date()): Range {
+  if ((DATE_BUCKET_SLUGS as readonly string[]).includes(value)) {
+    return bucketToRange(value as DateBucket, now);
+  }
+
+  const exactDay = parseNzLocal(value);
+  if (!exactDay) return bucketToRange("week", now);
+  return { from: exactDay, to: nzStartOfDay(exactDay, 1) };
+}
+
 /** "今天 19:30" / "Sat 14:00" style label for a card. */
 export function formatWhen(start: Date, opts: { locale: "zh" | "en"; now?: Date }): string {
   const now = opts.now ?? new Date();

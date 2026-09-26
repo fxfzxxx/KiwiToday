@@ -4,6 +4,7 @@ import {
   CATEGORIES, CITIES, DATE_BUCKETS, getCity, type KiwiEvent,
 } from "@kiwi/core";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { EventCard } from "./EventCard";
@@ -50,6 +51,7 @@ export function Shell({
   // Abort in-flight requests when filters change again quickly, so a slow
   // earlier response cannot overwrite a newer one.
   const inflight = useRef<AbortController | null>(null);
+  const dateInput = useRef<HTMLInputElement>(null);
   const first = useRef(true);
 
   const load = useCallback(async () => {
@@ -94,13 +96,17 @@ export function Shell({
   );
   const selectedVenue = venues.find((item) => item.slug === venue);
   const placeName = selectedVenue?.name ?? (locale === "zh" ? (cityInfo?.zh ?? city) : (cityInfo?.en ?? city));
+  const exactDate = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : "";
 
   return (
     <div className="flex h-screen flex-col">
       <header className="z-20 shrink-0 border-b border-line bg-white/95 shadow-[0_1px_8px_rgba(8,65,92,0.04)] backdrop-blur">
         <div className="flex min-h-14 items-center gap-4 px-4 py-2.5 lg:px-6">
           <div className="flex shrink-0 items-baseline gap-2">
-            <a href="/" aria-label="返回 KiwiToday 首页" className="text-[19px] font-bold tracking-[-0.03em] text-ink hover:text-coral">{copy.brand}</a>
+            <a href="/" aria-label="返回 KiwiToday 首页" className="flex items-center gap-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-sea/40">
+              <Image src="/brand/kiwitoday-logo-light.png" alt="" width={40} height={40} priority className="h-10 w-10 shrink-0 rounded-lg" />
+              <span className="hidden text-[19px] font-bold tracking-[-0.03em] text-ink sm:inline">{copy.brand}</span>
+            </a>
             <span className="hidden text-[11px] text-ink-soft xl:inline">{copy.tagline}</span>
           </div>
           <div className="hidden h-7 w-px bg-line sm:block" />
@@ -156,6 +162,29 @@ export function Shell({
             <span className="hidden h-6 w-px bg-line md:block" />
             <div className="flex max-w-full gap-1.5 overflow-x-auto" aria-label={locale === "zh" ? "日期范围" : "Date range"}>
               <ChipGroup items={DATE_BUCKETS.map((bucket) => ({ value: bucket.slug, label: locale === "zh" ? bucket.zh : bucket.en }))} value={date} onChange={setDate} />
+            </div>
+            <div className="relative shrink-0">
+              <button
+                type="button"
+                onClick={() => {
+                  const input = dateInput.current;
+                  if (!input) return;
+                  if (typeof input.showPicker === "function") input.showPicker();
+                  else input.click();
+                }}
+                className={`flex h-8 cursor-pointer items-center rounded-lg border bg-white px-3 text-[12px] font-medium transition focus:border-sea focus:outline-none focus:ring-2 focus:ring-sea/10 ${exactDate ? "border-sea text-ink" : "border-line text-ink-soft hover:border-ink/30"}`}
+              >
+                {locale === "zh" ? "选择日期" : "Pick a date"}
+              </button>
+              <input
+                ref={dateInput}
+                type="date"
+                value={exactDate}
+                onChange={(event) => { if (event.target.value) setDate(event.target.value); }}
+                aria-label={locale === "zh" ? "选择具体日期" : "Choose an exact date"}
+                tabIndex={-1}
+                className="pointer-events-none absolute inset-0 h-full w-full opacity-0"
+              />
             </div>
             <div className="ml-auto flex gap-1.5">
               <Chip active={freeOnly} onClick={() => setFreeOnly((free) => !free)}>{copy.free}</Chip>

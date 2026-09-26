@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { bucketToRange, formatWhen, nzOffsetMs, nzStartOfDay, nzWeekday, parseNzLocal } from "../src/dates";
+import { bucketToRange, dateFilterToRange, formatWhen, nzOffsetMs, nzStartOfDay, nzWeekday, parseNzLocal } from "../src/dates";
 
 // NZDT (UTC+13) — January. NZST (UTC+12) — July.
 const SUMMER = new Date("2026-01-15T02:00:00Z"); // 15:00 Thu in Auckland
@@ -48,6 +48,16 @@ test("on Saturday the weekend bucket is the one we are in", () => {
 
 test("all dates is unbounded", () => {
   assert.equal(bucketToRange("all", SUMMER).to, null);
+});
+
+test("an exact calendar date covers that full Auckland day", () => {
+  const summer = dateFilterToRange("2026-01-17", SUMMER);
+  assert.equal(summer.from.toISOString(), "2026-01-16T11:00:00.000Z");
+  assert.equal(summer.to!.toISOString(), "2026-01-17T11:00:00.000Z");
+
+  const winter = dateFilterToRange("2026-07-17", WINTER);
+  assert.equal(winter.from.toISOString(), "2026-07-16T12:00:00.000Z");
+  assert.equal(winter.to!.toISOString(), "2026-07-17T12:00:00.000Z");
 });
 
 test("formatWhen labels relative days in both locales", () => {
