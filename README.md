@@ -1,5 +1,7 @@
 # KiwiToday
 
+> 场馆优先采集试点及运行命令见 [CRAWLING.md](./CRAWLING.md)。
+
 > 当前部署目标为 **Netlify + Railway**。本次进度、部署步骤和待解决风险见
 > [DEPLOYMENT.md](./DEPLOYMENT.md)。以下 Fly.io 选型说明为历史设计背景。
 

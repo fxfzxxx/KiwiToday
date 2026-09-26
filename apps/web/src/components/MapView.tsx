@@ -2,7 +2,7 @@
 
 import { getCity, type KiwiEvent } from "@kiwi/core";
 import maplibregl, { type GeoJSONSource, type Map as MlMap } from "maplibre-gl";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 /**
@@ -27,6 +27,7 @@ export function MapView({
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MlMap | null>(null);
   const ready = useRef(false);
+  const [loaded, setLoaded] = useState(false);
 
   // Callbacks live in refs so the map is built once; re-creating it on every
   // parent render is the classic way to make a map flicker and lose state.
@@ -41,7 +42,7 @@ export function MapView({
 
     const m = new maplibregl.Map({
       container: container.current,
-      style: process.env.NEXT_PUBLIC_MAP_STYLE_URL ?? "https://demotiles.maplibre.org/style.json",
+      style: process.env.NEXT_PUBLIC_MAP_STYLE_URL ?? "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
       center: [home.lng, home.lat],
       zoom: home.zoom,
       attributionControl: { compact: true },
@@ -124,10 +125,11 @@ export function MapView({
       });
 
       ready.current = true;
+      setLoaded(true);
       m.resize();
     });
 
-    return () => { m.remove(); map.current = null; ready.current = false; };
+    return () => { m.remove(); map.current = null; ready.current = false; setLoaded(false); };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- built once on purpose
   }, []);
 
@@ -152,7 +154,7 @@ export function MapView({
           },
         })),
     });
-  }, [events, activeId, hoveredId]);
+  }, [events, activeId, hoveredId, loaded]);
 
   useEffect(() => {
     const m = map.current;

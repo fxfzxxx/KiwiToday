@@ -2,8 +2,10 @@ node_modules/
 dist/
 .next/
 .turbo/
+.pnpm-store/
 *.tsbuildinfo
 .env
 .env.local
 .DS_Store
 coverage/
+artifacts/

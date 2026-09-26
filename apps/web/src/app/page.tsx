@@ -1,10 +1,11 @@
-import { CITIES, eventQuerySchema, getCity, type KiwiEvent } from "@kiwi/core";
-import { hasEventBackend, loadEventPage } from "@/lib/events";
+import { CITIES, eventQuerySchema, getCity, type KiwiEvent, type VenueSnapshot } from "@kiwi/core";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { SAMPLE_EVENTS } from "@/lib/sample";
-import { filterSample } from "@/lib/filter-sample";
+import { venueSnapshotEvents } from "@/lib/venue-events";
 import { Shell } from "@/components/Shell";
+import snapshotData from "@/data/venue-snapshot.json";
+
+const snapshot = snapshotData as VenueSnapshot;
 
 /**
  * Server-rendered so the first paint carries real event content. This is the
@@ -19,15 +20,17 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
   const sp = await searchParams;
   const city = getCity(String(sp.city ?? "auckland"));
   if (!city) return {};
+  const venue = typeof sp.venue === "string" ? snapshot.venues.find((item) => item.slug === sp.venue) : undefined;
   return {
-    title: `${city.zh}本地活动 · What's on in ${city.en}`,
-    description: `${city.zh}近期的市集、演出、户外与赛事聚合。Events, gigs and markets happening in ${city.en}, New Zealand.`,
+    title: venue ? `${venue.name} 活动 · KiwiToday` : `${city.zh}本地活动 · What's on in ${city.en}`,
+    description: venue ? `${venue.name} 已公布的近期活动、演出日期和详情。` : `${city.zh}近期的市集、演出、户外与赛事聚合。Events, gigs and markets happening in ${city.en}, New Zealand.`,
   };
 }
 
 async function loadEvents(sp: Record<string, string | string[] | undefined>) {
   const parsed = eventQuerySchema.safeParse({
     city: typeof sp.city === "string" ? sp.city : "auckland",
+    venue: typeof sp.venue === "string" ? sp.venue : undefined,
     date: typeof sp.date === "string" ? sp.date : "week",
     category: typeof sp.category === "string" ? sp.category : undefined,
     limit: 60,
@@ -35,24 +38,12 @@ async function loadEvents(sp: Record<string, string | string[] | undefined>) {
   if (!parsed.success) notFound();
   const query = parsed.data;
 
-  if (!hasEventBackend()) {
-    if (process.env.NODE_ENV === "production" && process.env.DEMO_MODE !== "true") {
-      throw new Error("Configure API_BASE_URL or explicitly enable DEMO_MODE");
-    }
-    return { events: filterSample(SAMPLE_EVENTS, query), demo: true, query };
-  }
-  try {
-    const { events } = await loadEventPage(query);
-    return { events, demo: false, query };
-  } catch (err) {
-    console.error("SSR findEvents failed", err);
-    throw err;
-  }
+  return { events: venueSnapshotEvents(query), query };
 }
 
 export default async function HomePage({ searchParams }: { searchParams: SearchParams }) {
   const sp = await searchParams;
-  const { events, demo, query } = await loadEvents(sp);
+  const { events, query } = await loadEvents(sp);
 
   return (
     <>
@@ -61,7 +52,8 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
         initialCity={String(query.city ?? "auckland")}
         initialDate={String(query.date)}
         initialCategory={query.category ? String(query.category) : null}
-        demo={demo}
+        initialVenue={query.venue ? String(query.venue) : null}
+        venues={snapshot.venues.map(({ slug, name }) => ({ slug, name }))}
       />
       {/* Crawlable plain-text index. The interactive shell is client-side; this
           is what a JS-less crawler (and a screen reader jumping by heading)

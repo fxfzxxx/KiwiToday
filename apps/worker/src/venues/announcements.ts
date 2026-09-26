@@ -1,0 +1,224 @@
+import { load } from "cheerio";
+
+export interface Announcement {
+  title: string; date: string; endDate?: string; sourceUrl: string; precision: "day";
+  imageUrl?: string; summary?: string; scheduleText?: string; sessionDates?: string[];
+}
+
+function cleanText(value: string | undefined, max = 2_000): string | undefined {
+  const text = value?.replace(/\s+/g, " ").trim();
+  if (!text || text.length < 24 || /largest art institution in New Zealand, with a collection numbering/i.test(text) ||
+    /^Experience .+ at .+\. Visit aucklandlive\.co\.nz to find out about/i.test(text) || /^Presented by:/i.test(text) ||
+    /^Find .+ tickets at (?:www\.)?sparkarena\.co\.nz\b/i.test(text) ||
+    /^(?:(?:mon|tues|wednes|thurs|fri|satur|sun)day\s+)?\d{1,2}\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{4}(?:\s*[-–]\s*\d{1,2}\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{4})?$/i.test(text) ||
+    /^\d{1,2}\s*[-–]\s*\d{1,2}\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{4}$/i.test(text)) return undefined;
+  return text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
+}
+
+function safeImage(raw: string | undefined, base: string): string | undefined {
+  if (!raw || raw.startsWith("data:")) return undefined;
+  try {
+    const image = new URL(raw, base);
+    if (image.protocol !== "https:" || image.username || image.password || /\.svg(?:$|\?)/i.test(image.href)) return undefined;
+    return image.href;
+  } catch { return undefined; }
+}
+
+/** Extract only publisher-supplied page metadata; no generated copy. */
+export function extractPageMeta(html: string, url: string): Pick<Announcement, "imageUrl" | "summary" | "scheduleText" | "sessionDates"> {
+  const $ = load(html);
+  const imageUrl = safeImage(
+    $('meta[property="og:image"]').attr("content") ?? $('meta[name="twitter:image"]').attr("content") ??
+    $("main img[src], article img[src]").filter((_, el) => !/logo|icon|avatar/i.test(`${$(el).attr("class") ?? ""} ${$(el).attr("alt") ?? ""}`)).first().attr("src"), url,
+  );
+  const showDescription = new URL(url).hostname === "www.aucklandlive.co.nz"
+    ? $("section.text-content-block .content-primary p").map((_, el) => $(el).text().replace(/\s+/g, " ").trim()).get()
+      .filter((text) => text.length >= 40 && !/^More information\b/i.test(text)).join(" ")
+    : undefined;
+  const sparkDescription = new URL(url).hostname === "www.sparkarena.co.nz"
+    ? [
+        $('[id^="extraInfo-"] .MuiTypography-paragraph p'),
+        $('[data-component="ContentRichTextModule"]').first().find("p"),
+      ].map((nodes) => nodes.map((_, el) => $(el).text().replace(/\s+/g, " ").trim()).get()
+        .filter((text, index, all) => text.length >= 40 && !/^Age Restrictions?:/i.test(text) && all.indexOf(text) === index).join(" ")).find(Boolean)
+    : undefined;
+  const galleryHeading = $("h1,h2,h3,h4,h5").filter((_, el) => $(el).text().trim() === "Event detail").first();
+  const galleryDescription = new URL(url).hostname === "www.aucklandartgallery.com" && galleryHeading.length
+    ? galleryHeading.parent().parent().find(".rich-editor-content").first().find("p").map((_, el) => $(el).text().replace(/\s+/g, " ").trim()).get()
+      .filter((text) => text.length >= 40).join(" ")
+    : undefined;
+  const edenDescription = new URL(url).hostname === "edenpark.co.nz"
+    ? $("body p").map((_, el) => $(el).text().replace(/\s+/g, " ").trim()).get()
+      .filter((text) => text.length >= 40 && !/^(?:An Eden Park membership|For all membership|Eden Park42|Phone \+64|Please read the full Conditions|Food outlets within|Please respect our neighbours|More information will be available|Ticket-holders can watch)/i.test(text))
+      .join(" ")
+    : undefined;
+  const structuredDescriptions: string[] = [];
+  const structuredSessionStarts: string[] = [];
+  const visitJson = (value: unknown) => {
+    if (Array.isArray(value)) { value.forEach(visitJson); return; }
+    if (!value || typeof value !== "object") return;
+    const record = value as Record<string, unknown>;
+    const types = Array.isArray(record["@type"]) ? record["@type"] : [record["@type"]];
+    if (types.some((type) => typeof type === "string" && /Event$/.test(type))) {
+      if (typeof record.description === "string") structuredDescriptions.push(record.description);
+      if (typeof record.startDate === "string") structuredSessionStarts.push(record.startDate);
+    }
+    if (record["@graph"]) visitJson(record["@graph"]);
+  };
+  $('script[type="application/ld+json"]').each((_, el) => { try { visitJson(JSON.parse($(el).text())); } catch { /* Ignore malformed metadata. */ } });
+  const summary = [
+    sparkDescription,
+    showDescription,
+    galleryDescription,
+    edenDescription,
+    ...structuredDescriptions,
+    $('meta[property="og:description"]').attr("content"),
+    $('meta[name="description"]').attr("content"),
+    ...$("main p, article p").map((_, el) => $(el).text()).get(),
+  ].map((candidate) => cleanText(candidate)).find(Boolean);
+  const isAucklandLiveShow = new URL(url).hostname === "www.aucklandlive.co.nz" && new URL(url).pathname.startsWith("/show/");
+  const sessionDates = isAucklandLiveShow ? [...new Set(structuredSessionStarts.map((raw) => {
+    const date = new Date(raw);
+    return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en-CA", { timeZone: "Pacific/Auckland", year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
+  }).filter((date) => /^\d{4}-\d{2}-\d{2}$/.test(date)))].sort() : [];
+  const sessionTimes = isAucklandLiveShow ? [...new Set(structuredSessionStarts.map((raw) => {
+    const date = new Date(raw);
+    return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en-NZ", { timeZone: "Pacific/Auckland", hour: "numeric", minute: "2-digit", hour12: true }).format(date);
+  }).filter(Boolean))] : [];
+  const scheduleText = sessionTimes.length && sessionTimes.length <= 4 ? sessionTimes.join(" / ") : sessionTimes.length ? "Multiple session times" : undefined;
+  return { ...(imageUrl ? { imageUrl } : {}), ...(summary ? { summary } : {}), ...(scheduleText ? { scheduleText } : {}), ...(sessionDates.length ? { sessionDates } : {}) };
+}
+
+/** Read JSON arrays inside serialized application state without executing scripts. */
+export function embeddedIncluded(html: string): unknown[] {
+  const $ = load(html);
+  const script = $("script").toArray().map((element) => $(element).text()).find((text) => text.includes("window.__INITIAL_STATE__"));
+  if (!script) return [];
+  const marker = '"included":';
+  const at = script.indexOf(marker);
+  if (at < 0) return [];
+  const start = script.indexOf("[", at + marker.length);
+  let depth = 0, quoted = false, escaped = false;
+  for (let index = start; index >= 0 && index < script.length; index++) {
+    const char = script[index];
+    if (quoted) { if (escaped) escaped = false; else if (char === "\\") escaped = true; else if (char === '"') quoted = false; continue; }
+    if (char === '"') quoted = true;
+    else if (char === "[") depth++;
+    else if (char === "]" && --depth === 0) {
+      try { return JSON.parse(script.slice(start, index + 1)); } catch { return []; }
+    }
+  }
+  return [];
+}
+/** Site-specific visible fields, verified against official pages. Never infer a year. */
+export function extractAnnouncements(slug: string, html: string, url: string): Announcement[] {
+  const $ = load(html);
+  const items: Announcement[] = [];
+  const liveVenues: Record<string, string> = { "the-civic": "The Civic", "auckland-town-hall": "Auckland Town Hall", "aotea-centre": "Aotea Centre", "bruce-mason": "Bruce Mason Centre" };
+  if (liveVenues[slug] && new URL(url).hostname === "www.aucklandlive.co.nz" && new URL(url).pathname.startsWith("/venue/")) {
+    for (const value of embeddedIncluded(html)) {
+      const row = value as { type?: string; attributes?: Record<string, unknown> };
+      const a = row?.attributes;
+      if (row?.type !== "shows" || !a || typeof a.name !== "string" || typeof a.slug !== "string" || !/^[a-z0-9-]+$/.test(a.slug) || typeof a.venue_name !== "string" || !a.venue_name.includes(liveVenues[slug]!)) continue;
+      if (typeof a.start_date !== "string" || typeof a.end_date !== "string") continue;
+      const date = a.start_date.slice(0, 10), endDate = a.end_date.slice(0, 10);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !/^\d{4}-\d{2}-\d{2}$/.test(endDate) || endDate < date) continue;
+      const imageUrl = safeImage(typeof a.landscape_thumbnail === "string" ? a.landscape_thumbnail : undefined, url);
+      items.push({ title: a.name, date, ...(date !== endDate ? { endDate } : {}), sourceUrl: new URL(`/show/${a.slug}`, url).href, precision: "day", ...(imageUrl ? { imageUrl } : {}) });
+    }
+  }
+  const add = (title: string, date: string, href: string, extra: Pick<Announcement, "imageUrl" | "summary" | "scheduleText" | "sessionDates"> = {}) => {
+    try {
+      const source = new URL(href, url);
+      if (!title.trim() || !/^\d{4}-\d{2}-\d{2}$/.test(date) || source.origin !== new URL(url).origin) return;
+      items.push({ title: title.trim(), date, sourceUrl: source.href, precision: "day", ...extra });
+    } catch { /* Bad source URL cannot be published. */ }
+  };
+  const nzDate = (raw: string) => {
+    const date = new Date(raw);
+    return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en-CA", { timeZone: "Pacific/Auckland", year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
+  };
+  const nzTime = (raw: string) => {
+    const date = new Date(raw);
+    return Number.isNaN(date.getTime()) ? undefined : new Intl.DateTimeFormat("en-NZ", { timeZone: "Pacific/Auckland", hour: "numeric", minute: "2-digit", hour12: true }).format(date);
+  };
+  const galleryDate = (raw: string): { date: string; endDate?: string } | null => {
+    const months: Record<string, string> = { Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12" };
+    const match = /^(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4})(?:\s*[-–]\s*(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4}))?$/.exec(raw.trim());
+    if (!match || !months[match[2]!] || (match[5] && !months[match[5]])) return null;
+    const date = `${match[3]}-${months[match[2]!]!}-${match[1]!.padStart(2, "0")}`;
+    const endDate = match[4] ? `${match[6]}-${months[match[5]!]!}-${match[4].padStart(2, "0")}` : undefined;
+    if (endDate && endDate < date) return null;
+    return { date, ...(endDate && endDate !== date ? { endDate } : {}) };
+  };
+  const gallerySessionDate = (raw: string): string | null => {
+    const months: Record<string, string> = { Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07", Aug: "08", Sep: "09", Sept: "09", Oct: "10", Nov: "11", Dec: "12" };
+    const match = /^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun),\s+(\d{1,2})\s+([A-Z][a-z]{2,3})\s+(\d{4}),/.exec(raw.trim());
+    return match && months[match[2]!] ? `${match[3]}-${months[match[2]!]!}-${match[1]!.padStart(2, "0")}` : null;
+  };
+  if (slug === "auckland-art-gallery" && new URL(url).pathname.startsWith("/visit/events")) {
+    const meta = extractPageMeta(html, url);
+    if (new URL(url).pathname === "/visit/events") {
+      $('a[href^="/visit/events/"]').each((_, el) => {
+        const row = $(el);
+        const title = row.find("h5").first().text().replace(/\s+/g, " ").trim();
+        const texts = row.find("p").map((_, node) => $(node).text().replace(/\s+/g, " ").trim()).get();
+        const dateIndex = texts.findIndex((text) => Boolean(galleryDate(text)));
+        const dateText = dateIndex >= 0 ? texts[dateIndex] : undefined;
+        const parsed = dateText ? galleryDate(dateText) : null;
+        if (!title || !parsed) return;
+        const sourceUrl = new URL(row.attr("href")!, url).href;
+        const imageUrl = safeImage(row.find("img[src]").first().attr("src"), url);
+        const scheduleText = dateIndex >= 0 ? texts[dateIndex + 1]?.trim() : undefined;
+        items.push({ title, ...parsed, sourceUrl, precision: "day", ...(imageUrl ? { imageUrl } : {}), ...(scheduleText ? { scheduleText } : {}) });
+      });
+    } else {
+      let eventData: Record<string, unknown> | undefined;
+      $('script[type="application/ld+json"]').each((_, el) => {
+        try {
+          const parsed = JSON.parse($(el).text()) as Record<string, unknown>;
+          if (parsed["@type"] === "Event") eventData = parsed;
+        } catch { /* Ignore malformed publisher metadata. */ }
+      });
+      const texts = $("main p").map((_, el) => $(el).text().replace(/\s+/g, " ").trim()).get();
+      const dateIndex = texts.findIndex((text) => Boolean(galleryDate(text)));
+      const dateText = dateIndex >= 0 ? texts[dateIndex] : undefined;
+      const parsed = dateText ? galleryDate(dateText) : null;
+      const title = typeof eventData?.name === "string" ? eventData.name.trim() : $("main h4").first().text().trim();
+      const summary = typeof eventData?.description === "string" ? cleanText(eventData.description) : meta.summary;
+      let scheduleText = dateIndex >= 0 ? texts[dateIndex + 1]?.trim() : undefined;
+      const sessionDates = [...new Set(texts.map(gallerySessionDate).filter((date): date is string => Boolean(date)))];
+      const sessionWeekdays = [...new Set(sessionDates.map((date) => new Intl.DateTimeFormat("en-NZ", { weekday: "long", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`))))];
+      if (scheduleText && sessionWeekdays.length === 1 && !/(?:weekdays?|weekends?|mondays?|tuesdays?|wednesdays?|thursdays?|fridays?|saturdays?|sundays?)/i.test(scheduleText)) scheduleText = `${sessionWeekdays[0]}s · ${scheduleText}`;
+      if (title && parsed) items.push({ title, ...parsed, sourceUrl: url, precision: "day", ...(meta.imageUrl ? { imageUrl: meta.imageUrl } : {}), ...(summary ? { summary } : {}), ...(scheduleText ? { scheduleText } : {}), ...(sessionDates.length ? { sessionDates } : {}) });
+    }
+  }
+  if (slug === "powerstation" && new URL(url).pathname.replace(/\/$/, "") === "/shows/coming") {
+    $("li.show").each((_, el) => {
+      const row = $(el);
+      add(row.find("h2").text(), nzDate(row.find("time[datetime]").attr("datetime") ?? ""), row.find("a.ab--cover").attr("href") ?? "", {
+        imageUrl: safeImage(row.find("img[src]").first().attr("src"), url),
+        summary: cleanText(row.find("p").first().text()),
+        scheduleText: nzTime(row.find("time[datetime]").attr("datetime") ?? ""),
+      });
+    });
+  }
+  if (slug === "q-theatre" && new URL(url).pathname.startsWith("/shows/")) {
+    $(".meta__date-items time[datetime]").each((_, el) => {
+      const raw = $(el).attr("datetime") ?? "";
+      add($("h1").first().text(), nzDate(raw), url, { scheduleText: nzTime(raw) });
+    });
+  }
+  if (slug === "eden-park") {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    $(".event-item").each((_, el) => {
+      const row = $(el);
+      const match = /^(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/.exec(row.find(".event-date").text().trim());
+      if (!match) return; // Date ranges need their own model; don't fabricate individual sessions.
+      const month = months.indexOf(match[2]!);
+      if (month < 0) return;
+      add(row.find("h3").text(), `${match[3]}-${String(month + 1).padStart(2, "0")}-${match[1]!.padStart(2, "0")}`, row.find("a").first().attr("href") ?? "");
+    });
+  }
+  return items;
+}

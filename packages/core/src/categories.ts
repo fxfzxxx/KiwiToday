@@ -24,7 +24,9 @@ export function getCategory(slug: string) {
 /**
  * Keyword → category. Applied to the source's own category label first, then to
  * the title as a fallback. Order matters: the first hit wins, so put the
- * narrow signals ("kayak") above the broad ones ("water").
+ * narrow signals ("kayak") above the broad ones ("water"). Keywords are
+ * matched as complete words or phrases so, for example, "sails into Auckland"
+ * does not turn a concert into an on-the-water event.
  */
 const RULES: ReadonlyArray<readonly [CategorySlug, readonly string[]]> = [
   ["water",   ["surf", "kayak", "paddle", "sail", "dive", "swim", "boat", "yacht", "waka ama", "rowing", "on the water"]],
@@ -34,15 +36,22 @@ const RULES: ReadonlyArray<readonly [CategorySlug, readonly string[]]> = [
   ["outdoor", ["hike", "walk", "tramp", "trail", "bush", "garden", "park run", "outdoor", "camping", "climb", "mountain bike"]],
   ["family",  ["kids", "family", "children", "whānau", "whanau", "playground", "toddler", "school holiday"]],
   ["arts",    ["theatre", "theater", "exhibition", "gallery", "museum", "art", "dance", "ballet", "opera", "film", "cinema", "comedy", "literature", "poetry"]],
-  ["music",   ["music", "gig", "concert", "band", "dj", "live", "festival", "orchestra", "symphony", "choir", "jazz", "hip hop", "electronic"]],
+  ["music",   ["music", "musician", "singer", "songwriter", "pop artist", "recording artist", "album", "gig", "concert", "band", "dj", "live", "festival", "orchestra", "symphony", "choir", "jazz", "hip hop", "electronic"]],
 ];
+
+function containsKeyword(text: string, keyword: string): boolean {
+  const pattern = keyword
+    .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    .replace(/\s+/g, "\\s+");
+  return new RegExp(`(?:^|[^a-z0-9])${pattern}(?:$|[^a-z0-9])`, "i").test(text);
+}
 
 /** Best-effort mapping. Never throws; falls back to "other". */
 export function inferCategory(...signals: Array<string | null | undefined>): CategorySlug {
   const hay = signals.filter(Boolean).join(" ").toLowerCase();
   if (!hay) return "other";
   for (const [slug, keywords] of RULES) {
-    if (keywords.some((k) => hay.includes(k))) return slug;
+    if (keywords.some((keyword) => containsKeyword(hay, keyword))) return slug;
   }
   return "other";
 }

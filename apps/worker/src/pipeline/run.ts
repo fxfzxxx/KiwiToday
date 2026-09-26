@@ -4,6 +4,8 @@ import { ticketmasterAdapter } from "../sources/ticketmaster";
 import { makeJsonLdAdapter } from "../sources/jsonld";
 import type { SourceAdapter } from "../sources/types";
 import { emptyStats, ingestListing, type IngestStats } from "./ingest";
+import { VENUE_SOURCES } from "../venues/catalog";
+import { venueAdapter } from "../venues/adapter";
 
 /** Adapters we ship. Anything not listed here is treated as a JSON-LD source. */
 const ADAPTERS: Record<string, SourceAdapter> = {
@@ -12,6 +14,8 @@ const ADAPTERS: Record<string, SourceAdapter> = {
 };
 
 export function adapterFor(slug: string): SourceAdapter {
+  const venue = VENUE_SOURCES.find((source) => source.slug === slug);
+  if (venue) return venueAdapter(venue);
   return ADAPTERS[slug] ?? makeJsonLdAdapter(slug);
 }
 
@@ -61,7 +65,7 @@ export async function runSource(slug: string, opts: RunOptions = {}): Promise<In
 
     // Only tombstone on a complete, unlimited run — a partial crawl must never
     // be read as "everything else disappeared".
-    if (!opts.dryRun && !opts.limit && seenExternalIds.length) {
+    if (!opts.dryRun && !opts.limit && seenExternalIds.length && !VENUE_SOURCES.some((source) => source.slug === slug)) {
       const gone = await markMissingRecordsGone(slug, seenExternalIds, sql);
       if (gone) log(`${slug}: tombstoned ${gone} listing(s) no longer upstream`);
     }

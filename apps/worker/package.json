@@ -10,17 +10,21 @@
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test test/*.test.ts",
-    "probe": "tsx src/probe.ts"
+    "probe": "tsx src/probe.ts",
+    "venues": "tsx src/venues/cli.ts",
+    "venues:publish": "tsx src/venues/publish.ts"
   },
   "dependencies": {
     "@kiwi/core": "workspace:*",
     "@kiwi/db": "workspace:*",
+    "cheerio": "^1.2.0",
     "pg-boss": "^10.1.5",
+    "robots-parser": "^3.0.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/node": "^22.10.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "@types/node": "^22.10.2"
+    "typescript": "^5.7.2"
   }
 }

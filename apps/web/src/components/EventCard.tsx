@@ -16,6 +16,13 @@ function placeholderStyle(id: string): React.CSSProperties {
   };
 }
 
+function compactSchedule(value: string | undefined): string | null {
+  if (!value) return null;
+  const range = /(\d{1,2}(?::\d{2})?\s*(?:am|pm))\s*(?:to|[–-])\s*(\d{1,2}(?::\d{2})?\s*(?:am|pm))/i.exec(value);
+  if (range) return `${range[1]!.replace(/\s+/g, "")}–${range[2]!.replace(/\s+/g, "")}`;
+  return value.length <= 40 ? value : null;
+}
+
 export function EventCard({
   event, locale, active, onSelect, onHover,
 }: {
@@ -27,6 +34,14 @@ export function EventCard({
 }) {
   const category = CATEGORIES.find((c) => c.slug === event.category);
   const title = locale === "zh" ? (event.titleZh ?? event.title) : event.title;
+  const when = event.dateOnly
+    ? new Intl.DateTimeFormat(locale === "zh" ? "zh-CN" : "en-NZ", { timeZone: "Pacific/Auckland", weekday: "short", month: "short", day: "numeric" }).format(new Date(event.startsAt))
+    : formatWhen(new Date(event.startsAt), { locale });
+  const schedule = compactSchedule(event.scheduleText);
+  const tags = [
+    locale === "zh" ? category?.zh : category?.en,
+    event.isFree ? (locale === "zh" ? "免费" : "Free") : null,
+  ].filter((tag): tag is string => Boolean(tag));
 
   return (
     <article
@@ -41,22 +56,17 @@ export function EventCard({
           // eslint-disable-next-line @next/next/no-img-element -- remote hosts are unbounded until images move to R2
           <img src={event.coverImageUrl} alt="" className="h-full w-full object-cover" loading="lazy" />
         ) : null}
-        <span className="absolute left-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[11px] font-medium text-ink">
-          {locale === "zh" ? category?.zh : category?.en}
-        </span>
-        {event.isFree ? (
-          <span className="absolute right-2 top-2 rounded-full bg-moss px-2 py-0.5 text-[11px] font-medium text-white">
-            {locale === "zh" ? "免费" : "Free"}
-          </span>
-        ) : null}
       </div>
 
       <div className="space-y-2 p-3">
-        <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug">{title}</h3>
+        <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug"><a href={event.detailUrl ?? event.sourceUrl} onClick={(click) => click.stopPropagation()}>{title}</a></h3>
+        <div className="flex flex-wrap gap-1.5" aria-label={locale === "zh" ? "活动标签" : "Event tags"}>
+          {tags.map((tag, index) => <span key={tag} className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${index === 0 ? "bg-ink/10 text-ink" : "bg-moss/10 text-moss"}`}>{tag}</span>)}
+        </div>
         <dl className="space-y-1 text-[12px] text-ink-soft">
           <div className="flex gap-1.5">
             <dt className="sr-only">{locale === "zh" ? "时间" : "When"}</dt>
-            <dd>{formatWhen(new Date(event.startsAt), { locale })}</dd>
+            <dd>{when}{schedule ? ` · ${schedule}` : ""}</dd>
           </div>
           {event.venue?.name ? (
             <div className="flex gap-1.5">
@@ -65,14 +75,14 @@ export function EventCard({
             </div>
           ) : null}
         </dl>
-        <div className="flex items-center justify-between pt-1 text-[11px] text-ink-soft">
-          <span>{event.sourceName}</span>
+        {event.sourceName !== event.venue?.name || event.sourceCount > 1 ? <div className="flex items-center justify-between pt-1 text-[11px] text-ink-soft">
+          <span>{event.sourceName !== event.venue?.name ? event.sourceName : ""}</span>
           {/* More sources carrying an event is our best available proxy for how
               big it is, until we have engagement of our own. */}
           {event.sourceCount > 1 ? (
             <span className="rounded bg-paper px-1.5 py-0.5">{event.sourceCount} sources</span>
           ) : null}
-        </div>
+        </div> : null}
       </div>
     </article>
   );

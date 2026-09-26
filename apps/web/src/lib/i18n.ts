@@ -7,7 +7,7 @@ export type Locale = "zh" | "en";
 
 export const STRINGS = {
   zh: {
-    brand: "Kiwi Local",
+    brand: "KiwiToday",
     tagline: "新西兰本地活动",
     viewList: "列表", viewSplit: "分屏", viewMap: "地图",
     allCategories: "全部分类", allDates: "全部日期",
@@ -21,7 +21,7 @@ export const STRINGS = {
     error: "加载失败，请重试",
   },
   en: {
-    brand: "Kiwi Local",
+    brand: "KiwiToday",
     tagline: "What's on in New Zealand",
     viewList: "List", viewSplit: "Split", viewMap: "Map",
     allCategories: "All categories", allDates: "All dates",

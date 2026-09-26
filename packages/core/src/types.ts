@@ -42,12 +42,20 @@ export const eventSchema = z.object({
   /** How many sources carry this event; a proxy for "how big a deal is it". */
   sourceCount: z.number().int().min(1).default(1),
   popularity: z.number().int().min(0).default(0),
+  /** Internal detail route when the app has a richer first-party page. */
+  detailUrl: z.string().optional(),
+  /** Publisher supplied a calendar day but no verified start time. */
+  dateOnly: z.boolean().optional(),
+  /** Publisher supplied recurrence or session-time text. */
+  scheduleText: z.string().optional(),
 });
 export type KiwiEvent = z.infer<typeof eventSchema>;
 
 /** Query accepted by GET /api/events. Shared by web, app and tests. */
 export const eventQuerySchema = z.object({
   city: z.enum(CITY_SLUGS as [string, ...string[]]).optional(),
+  /** Canonical venue slug selected from the venue directory. */
+  venue: z.string().trim().regex(/^[a-z0-9-]+$/).max(80).optional(),
   date: z.enum(DATE_BUCKET_SLUGS as [string, ...string[]]).default("week"),
   category: z.enum(CATEGORY_SLUGS as [string, ...string[]]).optional(),
   /** Map viewport: minLng,minLat,maxLng,maxLat */

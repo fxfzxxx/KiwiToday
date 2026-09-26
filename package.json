@@ -13,7 +13,9 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "db:migrate": "pnpm --filter @kiwi/db migrate",
-    "ingest": "pnpm --filter @kiwi/worker ingest"
+    "ingest": "pnpm --filter @kiwi/worker ingest",
+    "venues": "pnpm --filter @kiwi/worker venues",
+    "venues:publish": "pnpm --filter @kiwi/worker venues:publish"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
