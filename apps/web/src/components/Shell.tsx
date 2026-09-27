@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { EventCard } from "./EventCard";
+import { useLocale } from "./LocaleProvider";
 import { t, type Locale } from "@/lib/i18n";
 
 // MapLibre touches `window` at import time, so it must not be server-rendered.
@@ -17,6 +18,7 @@ const MapView = dynamic(() => import("./MapView").then((m) => m.MapView), {
 });
 
 type View = "list" | "split" | "map";
+const FILTER_CATEGORIES = CATEGORIES.filter((category) => category.slug !== "water");
 
 export function Shell({
   initialEvents, initialCity, initialDate, initialCategory, initialVenue, venues,
@@ -31,14 +33,13 @@ export function Shell({
   const router = useRouter();
   const [, startTransition] = useTransition();
 
-  const [locale, setLocale] = useState<Locale>("zh");
+  const { locale, toggleLocale } = useLocale();
   const [view, setView] = useState<View>("split");
   const [city, setCity] = useState(initialCity);
   const [date, setDate] = useState(initialDate);
   const [category, setCategory] = useState<string | null>(initialCategory);
   const [venue] = useState<string | null>(initialVenue);
   const [freeOnly, setFreeOnly] = useState(false);
-  const [showHeat, setShowHeat] = useState(false);
 
   const [events, setEvents] = useState<KiwiEvent[]>(initialEvents);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
@@ -51,8 +52,17 @@ export function Shell({
   // Abort in-flight requests when filters change again quickly, so a slow
   // earlier response cannot overwrite a newer one.
   const inflight = useRef<AbortController | null>(null);
-  const dateInput = useRef<HTMLInputElement>(null);
   const first = useRef(true);
+
+  useEffect(() => {
+    const mobile = window.matchMedia("(max-width: 1023px)");
+    const applyViewport = () => {
+      if (mobile.matches) setView((current) => current === "split" ? "list" : current);
+    };
+    applyViewport();
+    mobile.addEventListener("change", applyViewport);
+    return () => mobile.removeEventListener("change", applyViewport);
+  }, []);
 
   const load = useCallback(async () => {
     inflight.current?.abort();
@@ -99,7 +109,7 @@ export function Shell({
   const exactDate = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : "";
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className={`flex flex-col ${view === "list" ? "min-h-screen" : "h-screen"}`}>
       <header className="z-20 shrink-0 border-b border-line bg-white/95 shadow-[0_1px_8px_rgba(8,65,92,0.04)] backdrop-blur">
         <div className="flex min-h-14 items-center gap-4 px-4 py-2.5 lg:px-6">
           <div className="flex shrink-0 items-baseline gap-2">
@@ -116,7 +126,7 @@ export function Shell({
           </div>
           <div className="ml-auto flex items-center gap-2">
             <button
-              onClick={() => setLocale((l) => (l === "zh" ? "en" : "zh"))}
+              onClick={toggleLocale}
               className="rounded-lg border border-line bg-white px-2.5 py-1.5 text-[12px] font-medium transition hover:border-ink/30"
             >
               {locale === "zh" ? "EN" : "中文"}
@@ -128,7 +138,7 @@ export function Shell({
                   role="tab"
                   aria-selected={view === v}
                   onClick={() => setView(v)}
-                  className={`rounded-md px-2.5 py-1 text-[12px] font-medium transition ${view === v ? "bg-white text-ink shadow-sm" : "text-ink-soft hover:text-ink"}`}
+                  className={`${v === "split" ? "split-view-tab " : ""}rounded-md px-2.5 py-1 text-[12px] font-medium transition ${view === v ? "bg-white text-ink shadow-sm" : "text-ink-soft hover:text-ink"}`}
                 >
                   {v === "list" ? copy.viewList : v === "split" ? copy.viewSplit : copy.viewMap}
                 </button>
@@ -148,61 +158,40 @@ export function Shell({
             }} aria-label={locale === "zh" ? "选择城市" : "Select city"} className="h-9 rounded-lg border border-line bg-white px-3 text-[12px] font-semibold outline-none focus:border-sea">
               {CITIES.map((item) => <option key={item.slug} value={item.slug}>{locale === "zh" ? item.zh : item.en}</option>)}
             </select>
-            <VenuePicker
-              venues={venues}
-              value={venue}
-              locale={locale}
-              onSelect={(nextVenue) => {
-                const params = new URLSearchParams({ city, date });
-                if (category) params.set("category", category);
-                if (nextVenue) params.set("venue", nextVenue);
-                window.location.assign(`/?${params}`);
-              }}
-            />
-            <span className="hidden h-6 w-px bg-line md:block" />
-            <div className="flex max-w-full gap-1.5 overflow-x-auto" aria-label={locale === "zh" ? "日期范围" : "Date range"}>
-              <ChipGroup items={DATE_BUCKETS.map((bucket) => ({ value: bucket.slug, label: locale === "zh" ? bucket.zh : bucket.en }))} value={date} onChange={setDate} />
-            </div>
-            <div className="relative shrink-0">
-              <button
-                type="button"
-                onClick={() => {
-                  const input = dateInput.current;
-                  if (!input) return;
-                  if (typeof input.showPicker === "function") input.showPicker();
-                  else input.click();
+            <div className="flex w-full min-w-0 items-center gap-2 sm:w-auto">
+              <VenuePicker
+                venues={venues}
+                value={venue}
+                locale={locale}
+                onSelect={(nextVenue) => {
+                  const params = new URLSearchParams({ city, date });
+                  if (category) params.set("category", category);
+                  if (nextVenue) params.set("venue", nextVenue);
+                  window.location.assign(`/?${params}`);
                 }}
-                className={`flex h-8 cursor-pointer items-center rounded-lg border bg-white px-3 text-[12px] font-medium transition focus:border-sea focus:outline-none focus:ring-2 focus:ring-sea/10 ${exactDate ? "border-sea text-ink" : "border-line text-ink-soft hover:border-ink/30"}`}
-              >
-                {locale === "zh" ? "选择日期" : "Pick a date"}
-              </button>
-              <input
-                ref={dateInput}
-                type="date"
-                value={exactDate}
-                onChange={(event) => { if (event.target.value) setDate(event.target.value); }}
-                aria-label={locale === "zh" ? "选择具体日期" : "Choose an exact date"}
-                tabIndex={-1}
-                className="pointer-events-none absolute inset-0 h-full w-full opacity-0"
               />
+              <DatePicker value={exactDate} locale={locale} onSelect={setDate} />
+            </div>
+            <span className="hidden h-6 w-px bg-line md:block" />
+            <div className="flex max-w-full flex-wrap items-center gap-1.5" aria-label={locale === "zh" ? "日期范围" : "Date range"}>
+              <ChipGroup items={DATE_BUCKETS.map((bucket) => ({ value: bucket.slug, label: locale === "zh" ? bucket.zh : bucket.en }))} value={date} onChange={setDate} wrap />
             </div>
             <div className="ml-auto flex gap-1.5">
               <Chip active={freeOnly} onClick={() => setFreeOnly((free) => !free)}>{copy.free}</Chip>
-              {view !== "list" ? <Chip active={showHeat} onClick={() => setShowHeat((heat) => !heat)}>{copy.heat}</Chip> : null}
             </div>
           </div>
-          <div className="mt-2.5 flex items-center gap-2 overflow-x-auto border-t border-line/60 pt-2.5">
-            <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[.14em] text-ink-soft">{locale === "zh" ? "分类" : "Categories"}</span>
-            <ChipGroup items={[{ value: "", label: copy.allCategories }, ...CATEGORIES.map((item) => ({ value: item.slug, label: locale === "zh" ? item.zh : item.en }))]} value={category ?? ""} onChange={(value) => setCategory(value || null)} />
+          <div className="mt-2.5 flex flex-wrap items-center gap-2 border-t border-line/60 pt-2.5">
+            <span className="w-full shrink-0 text-[10px] font-semibold uppercase tracking-[.14em] text-ink-soft sm:w-auto">{locale === "zh" ? "分类" : "Categories"}</span>
+            <ChipGroup items={[{ value: "", label: copy.allCategories }, ...FILTER_CATEGORIES.map((item) => ({ value: item.slug, label: locale === "zh" ? item.zh : item.en }))]} value={category ?? ""} onChange={(value) => setCategory(value || null)} wrap compact />
           </div>
         </div>
 
       </header>
 
-      <main className="flex min-h-0 flex-1">
+      <main className={`flex ${view === "list" ? "flex-none" : "min-h-0 flex-1"} ${view === "split" ? "split-layout" : ""}`}>
         <section
-          className={`min-h-0 overflow-y-auto ${
-            view === "map" ? "hidden" : view === "list" ? "w-full" : "w-full max-w-[460px] shrink-0"
+          className={`${view === "list" ? "w-full overflow-visible" : "min-h-0 overflow-y-auto"} ${
+            view === "map" ? "hidden" : view === "list" ? "w-full" : "split-events"
           }`}
         >
           <div className="flex items-baseline justify-between px-4 pb-2 pt-3">
@@ -232,12 +221,11 @@ export function Shell({
           )}
         </section>
 
-        <section className={`min-h-0 flex-1 ${view === "list" ? "hidden" : ""}`}>
+        <section className={`min-h-0 flex-1 ${view === "list" ? "hidden" : view === "split" ? "split-map" : ""}`}>
           <MapView
             events={visible}
             activeId={activeId}
             hoveredId={hoveredId}
-            showHeat={showHeat}
             city={city}
             onSelect={setActiveId}
           />
@@ -247,12 +235,12 @@ export function Shell({
   );
 }
 
-function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function Chip({ active, onClick, children, compact = false }: { active: boolean; onClick: () => void; children: React.ReactNode; compact?: boolean }) {
   return (
     <button
       onClick={onClick}
       aria-pressed={active}
-      className={`shrink-0 whitespace-nowrap rounded-full border px-3 py-1 text-[12px] font-medium transition
+      className={`shrink-0 whitespace-nowrap rounded-full border ${compact ? "px-2 py-1 text-[11px] sm:px-2.5 sm:text-[12px]" : "px-3 py-1 text-[12px]"} font-medium transition
         ${active ? "border-ink bg-ink text-white" : "border-line bg-white text-ink hover:border-ink/30"}`}
     >
       {children}
@@ -261,19 +249,113 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
 }
 
 function ChipGroup({
-  items, value, onChange,
+  items, value, onChange, wrap = false, compact = false,
 }: {
   items: { value: string; label: string }[];
   value: string;
   onChange: (v: string) => void;
+  wrap?: boolean;
+  compact?: boolean;
 }) {
   return (
-    <div className="flex shrink-0 gap-1.5">
+    <div className={`flex ${compact ? "gap-1" : "gap-1.5"} ${wrap ? "min-w-0 max-w-full flex-wrap" : "shrink-0"}`}>
       {items.map((item) => (
-        <Chip key={item.value} active={value === item.value} onClick={() => onChange(item.value)}>
+        <Chip key={item.value} active={value === item.value} onClick={() => onChange(item.value)} compact={compact}>
           {item.label}
         </Chip>
       ))}
+    </div>
+  );
+}
+
+function DatePicker({ value, locale, onSelect }: {
+  value: string;
+  locale: Locale;
+  onSelect: (value: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [visibleMonth, setVisibleMonth] = useState(() => {
+    const [year, month] = value ? value.split("-").map(Number) : [];
+    const initial = value ? new Date(year!, month! - 1, 1) : new Date();
+    return new Date(initial.getFullYear(), initial.getMonth(), 1);
+  });
+  const root = useRef<HTMLDivElement>(null);
+  const isChinese = locale === "zh";
+  const year = visibleMonth.getFullYear();
+  const month = visibleMonth.getMonth();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const offset = (new Date(year, month, 1).getDay() + 6) % 7;
+  const days: Array<number | null> = [
+    ...Array.from({ length: offset }, () => null),
+    ...Array.from({ length: daysInMonth }, (_, index) => index + 1),
+  ];
+  const weekdays = isChinese ? ["一", "二", "三", "四", "五", "六", "日"] : ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const selectedLabel = value
+    ? new Intl.DateTimeFormat(isChinese ? "zh-CN" : "en-NZ", { year: "numeric", month: "short", day: "numeric" }).format(new Date(`${value}T12:00:00`))
+    : null;
+
+  useEffect(() => {
+    const close = (event: MouseEvent) => {
+      if (!root.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  function openCalendar() {
+    if (value) {
+      const [selectedYear, selectedMonth] = value.split("-").map(Number);
+      setVisibleMonth(new Date(selectedYear!, selectedMonth! - 1, 1));
+    }
+    setOpen((current) => !current);
+  }
+
+  function selectDay(day: number) {
+    const selected = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    onSelect(selected);
+    setOpen(false);
+  }
+
+  return (
+    <div ref={root} className="relative z-30 shrink-0">
+      <button
+        type="button"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        onClick={openCalendar}
+        className={`flex h-9 items-center gap-2 whitespace-nowrap rounded-lg border px-3 text-[12px] font-medium transition focus:outline-none focus:ring-2 focus:ring-sea/10 ${value ? "border-sea bg-sea/5 text-ink" : "border-line bg-white text-ink-soft hover:border-ink/30"}`}
+      >
+        <span>{selectedLabel ?? (isChinese ? "选择日期" : "Pick a date")}</span>
+        <span aria-hidden="true" className="text-[11px]">▦</span>
+      </button>
+      {open ? (
+        <div role="dialog" aria-label={isChinese ? "选择日期" : "Choose a date"} className="absolute left-0 top-full mt-2 w-[min(19rem,calc(100vw-2rem))] rounded-xl border border-line bg-white p-3 shadow-[0_16px_40px_rgba(8,65,92,0.16)]">
+          <div className="mb-3 flex items-center justify-between">
+            <button type="button" aria-label={isChinese ? "上个月" : "Previous month"} onClick={() => setVisibleMonth(new Date(year, month - 1, 1))} className="flex h-8 w-8 items-center justify-center rounded-lg text-ink-soft transition hover:bg-paper hover:text-ink">←</button>
+            <h2 className="text-[13px] font-semibold text-ink">{new Intl.DateTimeFormat(isChinese ? "zh-CN" : "en-NZ", { year: "numeric", month: "long" }).format(visibleMonth)}</h2>
+            <button type="button" aria-label={isChinese ? "下个月" : "Next month"} onClick={() => setVisibleMonth(new Date(year, month + 1, 1))} className="flex h-8 w-8 items-center justify-center rounded-lg text-ink-soft transition hover:bg-paper hover:text-ink">→</button>
+          </div>
+          <div className="grid grid-cols-7 gap-1 text-center">
+            {weekdays.map((weekday) => <span key={weekday} className="py-1 text-[10px] font-medium text-ink-soft">{weekday}</span>)}
+            {days.map((day, index) => {
+              if (day === null) return <span key={`empty-${index}`} aria-hidden="true" />;
+              const dayValue = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+              const isSelected = value === dayValue;
+              const today = new Date();
+              const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
+              return <button key={dayValue} type="button" aria-pressed={isSelected} onClick={() => selectDay(day)} className={`aspect-square rounded-lg text-[12px] transition ${isSelected ? "bg-sea text-white" : isToday ? "border border-sea/40 text-sea hover:bg-sea/10" : "text-ink hover:bg-paper"}`}>{day}</button>;
+            })}
+          </div>
+          {value ? <button type="button" onClick={() => { onSelect("week"); setOpen(false); }} className="mt-3 w-full border-t border-line pt-2.5 text-left text-[11px] font-medium text-coral hover:text-coral/80">{isChinese ? "清除具体日期" : "Clear exact date"}</button> : null}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -301,7 +383,7 @@ function VenuePicker({
   }, []);
 
   return (
-    <div ref={root} className="relative z-30 w-full sm:w-64">
+    <div ref={root} className="relative z-30 min-w-0 flex-1 sm:w-64">
       <button
         type="button"
         aria-haspopup="listbox"

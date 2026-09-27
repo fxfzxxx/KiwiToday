@@ -83,6 +83,14 @@ export function EventCard({
             <span className="rounded bg-paper px-1.5 py-0.5">{event.sourceCount} sources</span>
           ) : null}
         </div> : null}
+        <a
+          href={event.detailUrl ?? event.sourceUrl}
+          onClick={(click) => click.stopPropagation()}
+          className="flex items-center justify-between rounded-lg border border-coral/30 px-3 py-2 text-[12px] font-semibold text-coral transition hover:border-coral hover:bg-coral/5"
+        >
+          <span>{locale === "zh" ? "查看详细信息" : "View details"}</span>
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
     </article>
   );

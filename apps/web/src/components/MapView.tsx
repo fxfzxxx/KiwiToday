@@ -5,21 +5,13 @@ import maplibregl, { type GeoJSONSource, type Map as MlMap } from "maplibre-gl";
 import { useEffect, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-/**
- * MapLibre replaces the prototype's Leaflet + hand-rolled canvas heatmap.
- *
- * The prototype spent ~120 lines on a heatmap and a pin declutter pass. Both
- * are native here: `heatmap` is a GPU layer, and clustering collapses dense pins
- * without us measuring pixel distances by hand. The same layer spec also works
- * in @maplibre/maplibre-react-native when the app arrives.
- */
+/** MapLibre clustering keeps dense event markers readable without manual decluttering. */
 export function MapView({
-  events, activeId, hoveredId, showHeat, city, onSelect, onViewportChange,
+  events, activeId, hoveredId, city, onSelect, onViewportChange,
 }: {
   events: KiwiEvent[];
   activeId: string | null;
   hoveredId: string | null;
-  showHeat: boolean;
   city: string;
   onSelect: (id: string) => void;
   onViewportChange?: (bbox: [number, number, number, number]) => void;
@@ -57,25 +49,6 @@ export function MapView({
         cluster: true,
         clusterRadius: 44,
         clusterMaxZoom: 14,
-      });
-
-      m.addLayer({
-        id: "events-heat",
-        type: "heatmap",
-        source: "events",
-        layout: { visibility: "none" },
-        paint: {
-          // Popularity drives intensity, but log-ish weighting stops one
-          // stadium show from washing out a whole city of markets.
-          "heatmap-weight": ["interpolate", ["linear"], ["coalesce", ["get", "popularity"], 0], 0, 0.3, 4000, 1],
-          "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 9, 1, 15, 3],
-          "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 9, 18, 15, 50],
-          "heatmap-opacity": 0.75,
-          "heatmap-color": [
-            "interpolate", ["linear"], ["heatmap-density"],
-            0, "rgba(30,138,95,0)", 0.3, "#1E8A5F", 0.65, "#0B6E99", 1, "#FF6B4A",
-          ],
-        },
       });
 
       m.addLayer({
@@ -149,18 +122,11 @@ export function MapView({
           geometry: { type: "Point" as const, coordinates: [e.point!.lng, e.point!.lat] },
           properties: {
             id: e.id,
-            popularity: e.popularity,
             active: e.id === activeId || e.id === hoveredId,
           },
         })),
     });
   }, [events, activeId, hoveredId, loaded]);
-
-  useEffect(() => {
-    const m = map.current;
-    if (!m || !ready.current) return;
-    m.setLayoutProperty("events-heat", "visibility", showHeat ? "visible" : "none");
-  }, [showHeat]);
 
   // Recentre when the city changes, but not on every data refresh — yanking the
   // viewport while someone is panning is maddening.

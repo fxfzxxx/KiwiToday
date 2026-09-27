@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
+import { Noto_Sans_SC } from "next/font/google";
+import { LocaleProvider } from "@/components/LocaleProvider";
 import "./globals.css";
+
+const notoSansSC = Noto_Sans_SC({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://kiwitoday.nz"),
@@ -16,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN">
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className={`${notoSansSC.variable} min-h-screen font-sans antialiased`}><LocaleProvider>{children}</LocaleProvider></body>
     </html>
   );
 }

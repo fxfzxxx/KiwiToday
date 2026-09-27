@@ -7,6 +7,18 @@
 html, body { height: 100%; }
 body { background: theme('colors.paper'); color: theme('colors.ink.DEFAULT'); }
 
+@media (max-width: 1023px) {
+	.split-view-tab { display: none; }
+	.split-map { display: none; }
+	.split-events { width: 100%; max-width: none; flex: 1 1 auto; }
+}
+
+@media (min-width: 1024px) {
+	.split-layout { flex-direction: row; }
+	.split-events { order: 1; width: 100%; max-width: 460px; flex: 0 0 460px; }
+	.split-map { position: static; order: 2; width: auto; height: auto; flex: 1; border-bottom: 0; }
+}
+
 /* MapLibre's own chrome, toned down to match the page rather than shout. */
 .maplibregl-ctrl-attrib { font-size: 10px; background: rgba(255,255,255,.75); }
 .maplibregl-ctrl-group button { border-radius: 8px; }
