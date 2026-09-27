@@ -7,3 +7,12 @@ test("category keywords match complete words instead of substrings", () => {
   assert.equal(inferCategory("Auckland sailing regatta"), "other");
   assert.equal(inferCategory("Learn to sail in Auckland"), "water");
 });
+
+test("stand-up shows are comedy, not water activities", () => {
+  assert.equal(inferCategory("Aaron Chen", "A distinctive comedy voice, with a Funny Garden Netflix special, Adult Swim special and Adult Swim/Warner Media credit, plus a new stand-up hour."), "comedy");
+  assert.equal(inferCategory("Adult Swim sessions at the pool"), "water");
+});
+
+test("figurative deep dives are not water activities", () => {
+  assert.equal(inferCategory("Members | Deep dive: Contemporary art in Aotearoa"), "arts");
+});
