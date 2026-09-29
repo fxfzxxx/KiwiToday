@@ -1,6 +1,50 @@
 {
-  "generatedAt": "2026-09-26T08:12:48.473Z",
+  "generatedAt": "2026-09-29T08:41:57.339Z",
   "venues": [
+    {
+      "slug": "armageddon-auckland",
+      "name": "Auckland Showgrounds",
+      "city": "auckland",
+      "url": "https://www.armageddonexpo.com/",
+      "checkedAt": "2026-09-28T11:44:03.407Z",
+      "status": "found",
+      "pages": 2,
+      "failedPages": 0,
+      "truncated": false
+    },
+    {
+      "slug": "card-merchant-westcity",
+      "name": "Card Merchant WestCity",
+      "city": "auckland",
+      "url": "https://cardmerchant.co.nz/",
+      "checkedAt": "2026-09-28T11:17:25.866Z",
+      "status": "found",
+      "pages": 1,
+      "failedPages": 0,
+      "truncated": false
+    },
+    {
+      "slug": "cosmos-con-auckland",
+      "name": "Auckland Netball Centre",
+      "city": "auckland",
+      "url": "https://cosmosnz.org/cosmos-con-2027/",
+      "checkedAt": "2026-09-29T08:40:30.503Z",
+      "status": "found",
+      "pages": 1,
+      "failedPages": 0,
+      "truncated": true
+    },
+    {
+      "slug": "grand-archive-ascent-auckland",
+      "name": "Alexandra Park Raceway",
+      "city": "auckland",
+      "url": "https://www.eventbrite.com/e/grand-archive-tcg-ascent-auckland-2027-tickets-2001275411629",
+      "checkedAt": "2026-09-29T08:41:52.841Z",
+      "status": "found",
+      "pages": 1,
+      "failedPages": 0,
+      "truncated": false
+    },
     {
       "slug": "spark-arena",
       "name": "Spark Arena",
@@ -848,6 +892,43 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Pokémon Day - Free Cards & Activities!",
+      "date": "2026-09-30",
+      "startsAt": "2026-09-30T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2227acde-bd6e-43c9-ab95-34b73cb9d1cf-1788517662420.png",
+      "summary": "Come join us these school holidays at Card Merchant Westcity for some Pokémon fun! Head in store to trade with others or have fun with a range of free Pokémon activities! Free cards will be given to everyone that attends.",
+      "id": "90e0d74fce163139d1b3",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-09-30",
+      "startsAt": "2026-09-30T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "88a311fc163e74cd8ef0",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-09-30",
+      "startsAt": "2026-09-30T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "ad655be8cf6b5969cf1c",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Born Jovi",
       "date": "2026-10-01",
       "startsAt": null,
@@ -858,6 +939,18 @@
       "id": "8830a678593318181a68",
       "venueSlug": "tuning-fork",
       "checkedAt": "2026-09-25T09:18:25.120Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-10-01",
+      "startsAt": "2026-10-01T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "02537171d783b7436324",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Haydn & Shostakovich",
@@ -883,6 +976,18 @@
       "id": "22bd3679a4b612a3128a",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Thursday Casual Commander",
+      "date": "2026-10-01",
+      "startsAt": "2026-10-01T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "92a8a75b53931adf9e61",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Wonderverse",
@@ -935,6 +1040,19 @@
       "checkedAt": "2026-09-25T09:18:25.120Z"
     },
     {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-10-02",
+      "startsAt": "2026-10-02T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "b0dc200da6673a2cc55c",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Joseph and the Amazing Technicolor Dreamcoat",
       "date": "2026-10-02",
       "startsAt": null,
@@ -946,6 +1064,19 @@
       "id": "26e87c5c442c4e6f02f0",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Magic: The Gathering - Commander Challenge",
+      "date": "2026-10-02",
+      "startsAt": "2026-10-01T21:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/92d66544-e648-48ad-9615-1f06fa17d0bc-1788517909123.png",
+      "summary": "Come along to Card Merchant Westcity these school holidays and play in our free Magic: The Gathering Commander Challenge, running all-day! This is just like a typical Commander day, but with multiple challenges to complete; participants can win a promo when completing 3 challenges and another when completing 5! Each player will be given a Challenge Card, with each challenge ranging from easy to difficult - it'll be another way to enjoy the Commander format and scoring some cool promos!",
+      "id": "d7e7acadac0eb6abb86c",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Sonu Nigam",
@@ -960,6 +1091,31 @@
       "checkedAt": "2026-09-26T08:12:25.153Z"
     },
     {
+      "title": "Star Wars Unlimited Homeworlds Pre-Release Event",
+      "date": "2026-10-02",
+      "startsAt": "2026-10-02T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/92f1ef4a-0cfa-4348-a398-cf62767c1506-1790066224943.png",
+      "summary": "The ninth set for Star Wars Unlimited - Homeworlds - is almost here! This set turns its focus onto the various planets of the Star Wars galaxy, with a heavy emphasis on alien creatures and the invading armies they defend against. With two new tokens and a new keyword that allows you to upgrade your base, Homeworlds is sure to shake up the game in all sorts of new and exciting ways! Join us at Card Merchant Westcity for our Pre-Release Event to be one of the first to get your hands on the new cards from this set! Date: Friday, 2nd October 2026 Time: 6:30PM start Entry: $60, receive a pre-releas",
+      "id": "18e966fd561f6245d096",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-10-02",
+      "startsAt": "2026-10-02T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "dec212b221d20c4642a3",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Suzy Cato's Animal Antics",
       "date": "2026-10-02",
       "startsAt": null,
@@ -970,6 +1126,19 @@
       "id": "a25f84f0a5e5bc7c8617",
       "venueSlug": "aotea-centre",
       "checkedAt": "2026-09-25T10:44:17.159Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-10-02",
+      "startsAt": "2026-10-02T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "a992c4b2809462815454",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Body Re: Body",
@@ -985,6 +1154,19 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Disney Lorcana [Format Coconut] Casual Multiplayer Event!",
+      "date": "2026-10-03",
+      "startsAt": "2026-10-03T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2af28bc7-0c9d-413c-8f8d-25bd0930a79c-1790217431558.png",
+      "summary": "Card Merchant Westcity is hosting a casual Disney Lorcana Format Coconut event! We highly recommend you look at the rules below and download the Disney Lorcana app to help build a deck before the event! Some decks will be available for lending. This replaces our regular Core Constructed weekly hobby event. Date: Saturday, 3rd October 2026 Time: 2PM Entry: $12, receive a booster with entry! Format: Coconut (Casual) ​Rules for [Format Coconut] Beta: [Format Coconut] is a thematic multiplayer format for playing the Disney Lorcana Trading Card Game. You play in a group, with each deck built around",
+      "id": "2ccd921126f847de0b1d",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Four Last Songs",
       "date": "2026-10-03",
       "startsAt": null,
@@ -995,6 +1177,19 @@
       "id": "81182a4f65e608ef7cd5",
       "venueSlug": "auckland-town-hall",
       "checkedAt": "2026-09-25T10:43:31.608Z"
+    },
+    {
+      "title": "Grand Archive Auckland Regionals (.asphodel/paradise)",
+      "date": "2026-10-03",
+      "startsAt": "2026-10-02T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/89251eba-8061-47b9-accf-f80f0028d26c-1787290411259.png",
+      "summary": "Grand Archive Regionals for the .asphodel/paradise season at Card Merchant Westcity! Date: Sunday, 3rd October 2026 Time: 11am Entry: $60 Format: Constructed Structure: Swiss Prizing: 1st - Champion Playmat Top 8 - Nationals Qualifier Card, Finalist Playmat All Challengers - TBC Top 16 will be given 2 Sapphire packs and 17th+ will be given 1 Sapphire pack. Booster prizing dependent on turnout but minimum 1x booster box for winner and 4x booster packs for 17th+! All decklists must be submitted on omnidex before R1 starts.",
+      "id": "0c0d37962e668113180c",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Joseph and the Amazing Technicolor Dreamcoat",
@@ -1010,6 +1205,18 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Lorcana Weekly League",
+      "date": "2026-10-03",
+      "startsAt": "2026-10-03T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "f77033639f46fe5121bb",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Mountain Boy",
       "date": "2026-10-03",
       "startsAt": null,
@@ -1020,6 +1227,57 @@
       "id": "45dabb3feef2fabe29c9",
       "venueSlug": "tuning-fork",
       "checkedAt": "2026-09-25T09:18:25.120Z"
+    },
+    {
+      "title": "One Piece - Extra Grand Battle for Stores 2026 (September-October)",
+      "date": "2026-10-03",
+      "startsAt": "2026-10-02T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/107fe161-3cb3-4d79-91d5-fbaabab2be9d-1790057411509.png",
+      "summary": "Come sail with us for our One Piece Extra Grand Battle For Stores 2026 September-October Season at Card Merchant Westcity! Date: Saturday, 3rd October 2026 Time: 11:30AM Start Entry: $15, receive 1 Booster Pack with entry + Event Pack Vol.9! Format: Extra Regulation. In this format, all cards released to date are legal for play, except for a limited number of banned cards. Prizes: Participation: Event Pack Vol.9 x1 Top 8: Event Pack Vol.9 x1 Top 4: Limited Promotion Sleeves (Ms. All Sunday) Champion: Extra Grand Battle for Stores 2026 OP14-033 Perona x1 Capped at 32 players.",
+      "id": "ead830d8b7c73a59afcf",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-10-03",
+      "startsAt": "2026-10-02T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "f79d55b91e0d15c55a0b",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-10-03",
+      "startsAt": "2026-10-03T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "9eabcc131896d626b7fd",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon TCG League Challenge (Oct 2026)",
+      "date": "2026-10-03",
+      "startsAt": "2026-10-03T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/d059c035-bbbf-43e4-a26f-9b8116436585-1790218516950.png",
+      "summary": "The Pokemon TCG competitive season is back! Get Championship Points at League Challenges and earn qualification points to Pokemon World Championships! $10 entry (1 booster pack guaranteed per player) Top 4 will get prize packs! Decklists are required.",
+      "id": "2b869cebcfcc80a81b89",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Razorlight",
@@ -1061,6 +1319,19 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-10-04",
+      "startsAt": "2026-10-03T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "adccec31dd499b42c3f5",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Joseph and the Amazing Technicolor Dreamcoat",
       "date": "2026-10-04",
       "startsAt": null,
@@ -1085,6 +1356,18 @@
       "id": "d3ff15a2b756e321247f",
       "venueSlug": "powerstation",
       "checkedAt": "2026-09-25T12:07:42.898Z"
+    },
+    {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-10-04",
+      "startsAt": "2026-10-03T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "936854876f644f5c3edb",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "The 95bFM Kids Show Live",
@@ -1124,6 +1407,19 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Pokémon Day - Free Cards & Activities!",
+      "date": "2026-10-06",
+      "startsAt": "2026-10-06T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2227acde-bd6e-43c9-ab95-34b73cb9d1cf-1788517662420.png",
+      "summary": "Come join us these school holidays at Card Merchant Westcity for some Pokémon fun! Head in store to trade with others or have fun with a range of free Pokémon activities! Free cards will be given to everyone that attends.",
+      "id": "d9baee78d066b89087aa",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Joseph and the Amazing Technicolor Dreamcoat",
       "date": "2026-10-07",
       "startsAt": null,
@@ -1150,6 +1446,18 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-10-07",
+      "startsAt": "2026-10-07T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "cca58f5bd30c0c7d7a56",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Talk | Why Go? Thoughts and Reflections from the Learning from Venice Workshop",
       "date": "2026-10-07",
       "startsAt": null,
@@ -1166,6 +1474,18 @@
       "checkedAt": "2026-09-25T12:09:55.820Z"
     },
     {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-10-07",
+      "startsAt": "2026-10-07T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "4df0566b981631e3daa2",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "August Burns Red",
       "date": "2026-10-08",
       "startsAt": null,
@@ -1179,6 +1499,18 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-10-08",
+      "startsAt": "2026-10-08T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "59b48ef26abbaf9cdedf",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Joseph and the Amazing Technicolor Dreamcoat",
       "date": "2026-10-08",
       "startsAt": null,
@@ -1190,6 +1522,19 @@
       "id": "5b63094debc908ae2840",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Magic: The Gathering - Commander Challenge",
+      "date": "2026-10-08",
+      "startsAt": "2026-10-07T21:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/92d66544-e648-48ad-9615-1f06fa17d0bc-1788517909123.png",
+      "summary": "Come along to Card Merchant Westcity these school holidays and play in our free Magic: The Gathering Commander Challenge, running all-day! This is just like a typical Commander day, but with multiple challenges to complete; participants can win a promo when completing 3 challenges and another when completing 5! Each player will be given a Challenge Card, with each challenge ranging from easy to difficult - it'll be another way to enjoy the Commander format and scoring some cool promos!",
+      "id": "b6964b137d7cc308b54b",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Manawa Ora: Taurite",
@@ -1216,6 +1561,31 @@
       "id": "7783d3982f6f7e909bff",
       "venueSlug": "aotea-centre",
       "checkedAt": "2026-09-25T10:44:17.159Z"
+    },
+    {
+      "title": "Thursday Casual Commander",
+      "date": "2026-10-08",
+      "startsAt": "2026-10-08T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "2982dedad0f9dbfb02ea",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-10-09",
+      "startsAt": "2026-10-09T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "3884d299d4a073af0e98",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Insecure Delusion Presents: A Tribute To Tool",
@@ -1280,6 +1650,18 @@
       "checkedAt": "2026-09-26T08:12:25.153Z"
     },
     {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-10-09",
+      "startsAt": "2026-10-09T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "8d044553872a7a7d3e01",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Synergy",
       "date": "2026-10-09",
       "endDate": "2026-10-10",
@@ -1291,6 +1673,19 @@
       "id": "e1d6c4d9d20d1122abe0",
       "venueSlug": "bruce-mason",
       "checkedAt": "2026-09-25T10:44:54.509Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-10-09",
+      "startsAt": "2026-10-09T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "82c7c940ba2a1b43202f",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Aaron Chen",
@@ -1330,6 +1725,19 @@
       "checkedAt": "2026-09-25T10:43:31.608Z"
     },
     {
+      "title": "Flesh And Blood Pro Quest: London (CC) Card Merchant's Flight Path to Pro Tour: London!",
+      "date": "2026-10-10",
+      "startsAt": "2026-10-09T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0cb69a51-075d-4301-ab47-6f9f09c2e65a-1785717684958.png",
+      "summary": "Come join us for Card Merchant's Flight Path to Pro Tour: London at Card Merchant Westcity's Pro Quest: London event! On top of the usual prizing and Pro Tour invite, the winner will also receive a FREE flight to London! Date: Saturday, 10th October Time: 11AM Entry: $50 Entry Format: Classic Constructed Prizing: 1st: 1x Pro Tour: London Invitation, Free Flight to London, Promos TBC, share of the prize pool 2nd: Promos TBC, share of the prize pool Top 4: Promos TBC, share of the prize pool Top 8: Promos TBC, share of the prize pool After flights and judge support, 5 booster packs per player wi",
+      "id": "a4357718fb4925a388ce",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Joseph and the Amazing Technicolor Dreamcoat",
       "date": "2026-10-10",
       "startsAt": null,
@@ -1341,6 +1749,18 @@
       "id": "49c88953577353f7b068",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Lorcana Weekly League",
+      "date": "2026-10-10",
+      "startsAt": "2026-10-10T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "7bb560a8c5f2511e1836",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Noah Kahan",
@@ -1355,6 +1775,18 @@
       "checkedAt": "2026-09-26T08:12:25.153Z"
     },
     {
+      "title": "One Piece Hobby",
+      "date": "2026-10-10",
+      "startsAt": "2026-10-09T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "447181099423eeb244d9",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Paul Bosauder: Arco y Olvide Album Release Tour",
       "date": "2026-10-10",
       "startsAt": null,
@@ -1366,6 +1798,19 @@
       "id": "e79508b5c2f927022bcc",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-10-10",
+      "startsAt": "2026-10-10T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "4a3239b59aa8e868fe04",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Talk | A curator’s introduction to Picasso: Designed by Paul Smith",
@@ -1421,6 +1866,19 @@
       "checkedAt": "2026-09-25T10:43:31.608Z"
     },
     {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-10-11",
+      "startsAt": "2026-10-10T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "abcb06a310dab8499f59",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Members tour | Picasso: Designed by Paul Smith",
       "date": "2026-10-11",
       "startsAt": null,
@@ -1451,6 +1909,18 @@
       "id": "d4d3c7512972f73bc6af",
       "venueSlug": "auckland-art-gallery",
       "checkedAt": "2026-09-25T12:09:55.820Z"
+    },
+    {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-10-11",
+      "startsAt": "2026-10-10T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "d99ca5cedc1396b9b3f6",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "The Stink Bug Band",
@@ -1597,6 +2067,30 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-10-14",
+      "startsAt": "2026-10-14T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "d8ad07eb9580aa2e8e46",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-10-14",
+      "startsAt": "2026-10-14T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "e64e10d36e9d0600a852",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "YMCĀ",
       "date": "2026-10-14",
       "startsAt": null,
@@ -1620,6 +2114,18 @@
       "id": "a5ac010841280784c1fd",
       "venueSlug": "auckland-town-hall",
       "checkedAt": "2026-09-25T10:43:31.608Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-10-15",
+      "startsAt": "2026-10-15T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "ce7bdf272b651e39d7a7",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "James",
@@ -1686,6 +2192,18 @@
       "checkedAt": "2026-09-25T12:09:55.820Z"
     },
     {
+      "title": "Thursday Casual Commander",
+      "date": "2026-10-15",
+      "startsAt": "2026-10-15T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "9bc6769a4d4e82174cda",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Che Fu & The Kratez",
       "date": "2026-10-16",
       "startsAt": null,
@@ -1715,6 +2233,31 @@
       "checkedAt": "2026-09-25T10:43:31.608Z"
     },
     {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-10-16",
+      "startsAt": "2026-10-16T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "3c1567ed189dc1994676",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-10-16",
+      "startsAt": "2026-10-16T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "793f82ae4f102dd43ce3",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "The Arts Foundation Te Tumu Toi 2026 Laureate Awards",
       "date": "2026-10-16",
       "startsAt": null,
@@ -1725,6 +2268,19 @@
       "id": "6e38958af9b7bec183a8",
       "venueSlug": "aotea-centre",
       "checkedAt": "2026-09-25T10:44:17.159Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-10-16",
+      "startsAt": "2026-10-16T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "f8400ad4c8d1e4988b53",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "BHAV",
@@ -1767,6 +2323,18 @@
       "checkedAt": "2026-09-25T12:09:55.820Z"
     },
     {
+      "title": "Lorcana Weekly League",
+      "date": "2026-10-17",
+      "startsAt": "2026-10-17T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "d5f6a5feb996634b1993",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Macy Gray Live",
       "date": "2026-10-17",
       "startsAt": null,
@@ -1781,6 +2349,31 @@
       "id": "46b231885604c1f12e3c",
       "venueSlug": "the-civic",
       "checkedAt": "2026-09-26T00:36:18.996Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-10-17",
+      "startsAt": "2026-10-16T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "5abc2ff7f9f0afe4e45d",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-10-17",
+      "startsAt": "2026-10-17T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "bc0d6efcff325ff811ab",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Songs of the 1960s - 1980s",
@@ -1807,6 +2400,19 @@
       "checkedAt": "2026-09-26T08:12:25.153Z"
     },
     {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-10-18",
+      "startsAt": "2026-10-17T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "64f3fcaa4d0b019e5739",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Greg Davies - Full Fat Legend",
       "date": "2026-10-18",
       "endDate": "2026-10-19",
@@ -1818,6 +2424,18 @@
       "id": "016b3d7791c2ec797617",
       "venueSlug": "aotea-centre",
       "checkedAt": "2026-09-25T10:44:17.159Z"
+    },
+    {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-10-18",
+      "startsAt": "2026-10-17T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "ebf588bda4348cd2a6db",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Auckland Live Showdown Awards Night 2026",
@@ -1883,6 +2501,30 @@
       "checkedAt": "2026-09-25T10:44:17.159Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-10-21",
+      "startsAt": "2026-10-21T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "5d0bf0225ee4237677ea",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-10-21",
+      "startsAt": "2026-10-21T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "31408f04fe29a988dc03",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "A Box of Memories",
       "date": "2026-10-22",
       "startsAt": null,
@@ -1896,6 +2538,18 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-10-22",
+      "startsAt": "2026-10-22T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "4f847f37d4ade83f76a4",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Permobil Power in the Park",
       "date": "2026-10-22",
       "startsAt": null,
@@ -1906,6 +2560,18 @@
       "id": "caf17e008718c0e864ef",
       "venueSlug": "eden-park",
       "checkedAt": "2026-09-25T10:56:35.071Z"
+    },
+    {
+      "title": "Thursday Casual Commander",
+      "date": "2026-10-22",
+      "startsAt": "2026-10-22T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "56fd4634117e558f175f",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Tiki Taane with Auckland Phil",
@@ -1931,6 +2597,38 @@
       "id": "026c2ccbed36392006e1",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Armageddon Expo Auckland Spring 2026",
+      "date": "2026-10-23",
+      "endDate": "2026-10-26",
+      "startsAt": null,
+      "sourceUrl": "https://www.armageddonexpo.com/armageddon-updates/the-epic-expo-is-back-for-labour-weekend/",
+      "precision": "day",
+      "imageUrl": "https://www.armageddonexpo.com/resources/images/picker/2026-auck-s-poster.JPG",
+      "summary": "Get ready for three and a half days of EPICNESS at the Auckland Showgrounds over October 23-26th as Armageddon finishes out the year with its biggest event yet.\n\nThis year we have pulled out all the stops and worked hard to create some truly incredible gaming experiences, these include: - Kiwibank Virtual Reality and Arcade area - Fonterra Protein+ Racing zone - ASUS display - Noel Leemings Gaming - MightyApe sale zone - Overkill games - R18 Gears of War and Call of Duty arena - NZ Esports two level gaming area - Steam Machine and Steam Deck experience - PG Gaming zone Plus so much more!\n\nAdd to this, huge trading card zones from Card Merchant and Hobby Lords as well as many other exhibitors.\n\nOur biggest collection of Artist Alleys and exhibitors from across NZ and beyond, this is an ideal event to plan for Christmas and just pickup the best in gaming, collectibles and merchandise.\n\nSo many special events taking place including: - Cosplay Parades and Lip Sync - K-pop showcase - Amusement rides - Trading card tournaments and events - Steve the Goat! - Extra Lives Interactive Video Game concert - Daily celebrity DnD events And more to be announced!",
+      "sessionDates": [
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26"
+      ],
+      "id": "e3bad6819e93625779f6",
+      "venueSlug": "armageddon-auckland",
+      "checkedAt": "2026-09-28T11:44:03.407Z"
+    },
+    {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-10-23",
+      "startsAt": "2026-10-23T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "4f08ff5de8251fc72ada",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Get Rhythm",
@@ -1970,6 +2668,31 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-10-23",
+      "startsAt": "2026-10-23T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "b1f7a73dc90b0d172677",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-10-23",
+      "startsAt": "2026-10-23T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "b845e146310b1d576c6f",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "A Box of Memories",
       "date": "2026-10-24",
       "startsAt": null,
@@ -2007,6 +2730,18 @@
       "checkedAt": "2026-09-25T10:44:54.509Z"
     },
     {
+      "title": "Lorcana Weekly League",
+      "date": "2026-10-24",
+      "startsAt": "2026-10-24T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "3583efad644da4b20fc6",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Midge Ure",
       "date": "2026-10-24",
       "startsAt": null,
@@ -2018,6 +2753,31 @@
       "id": "860570ccf3b9ca8b456b",
       "venueSlug": "powerstation",
       "checkedAt": "2026-09-25T12:07:42.898Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-10-24",
+      "startsAt": "2026-10-23T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "1346f0761a94033c7b79",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-10-24",
+      "startsAt": "2026-10-24T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "3e24b319d2b292c01013",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Viva La Dirt League",
@@ -2058,6 +2818,31 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-10-25",
+      "startsAt": "2026-10-24T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "8d1ccea3a5581da53ddf",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-10-25",
+      "startsAt": "2026-10-24T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "d169510a5cd1a2eaccb5",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Diwali | Lunchtime music series",
       "date": "2026-10-28",
       "endDate": "2026-10-30",
@@ -2090,6 +2875,18 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-10-28",
+      "startsAt": "2026-10-28T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "9b8a7e063be194e1136e",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Songs for Nobodies",
       "date": "2026-10-28",
       "startsAt": null,
@@ -2101,6 +2898,30 @@
       "id": "a857a3d6bc2e30eafc58",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-10-28",
+      "startsAt": "2026-10-28T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "aef981d10153b495007a",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-10-29",
+      "startsAt": "2026-10-29T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "31196d427c0d5c6a4fac",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Rainbow Games Opening Ceremony",
@@ -2126,6 +2947,18 @@
       "id": "ea91a5af2f0095fe11aa",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Thursday Casual Commander",
+      "date": "2026-10-29",
+      "startsAt": "2026-10-29T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "a3cda4b4fd8b795db640",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Beatlemania On Tour ",
@@ -2162,6 +2995,19 @@
       "id": "4d36dc9a435beba9a3e3",
       "venueSlug": "spark-arena",
       "checkedAt": "2026-09-26T08:12:25.153Z"
+    },
+    {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-10-30",
+      "startsAt": "2026-10-30T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "9091633545484145ff5d",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Killswitch Engage New Zealand 2026 Tour",
@@ -2202,6 +3048,31 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-10-30",
+      "startsAt": "2026-10-30T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "c6b4837eeee0480f72b6",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-10-30",
+      "startsAt": "2026-10-30T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "cbd6ac06c4f536a37f95",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Diwali | Talk: The epics and their others",
       "date": "2026-10-31",
       "startsAt": null,
@@ -2234,6 +3105,43 @@
       "checkedAt": "2026-09-25T12:09:55.820Z"
     },
     {
+      "title": "Lorcana Weekly League",
+      "date": "2026-10-31",
+      "startsAt": "2026-10-31T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "395fadf50316e19fe552",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-10-31",
+      "startsAt": "2026-10-30T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "e2d4c074cc6f02fb61f3",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-10-31",
+      "startsAt": "2026-10-31T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "562b393a7b5c1330502d",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Songs for Nobodies",
       "date": "2026-10-31",
       "startsAt": null,
@@ -2245,6 +3153,18 @@
       "id": "ff1018951b1f71c91a17",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "The Spring Auckland Edison Seasonal (Yu-Gi-Oh! Edison Format)",
+      "date": "2026-10-31",
+      "startsAt": "2026-10-30T21:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/481e31af-4e3f-46ae-aec9-6e4b3adb2586-1788945971689.jpg",
+      "summary": "Get your game on!! It’s time for the spring Edison seasonal!! Entry: $25 Location: Card Merchant Westcity Date: 31st October 2026 Time: 10am start Prizing: 1st place: Raiza the Storm Monarch FOTB-EN026 (Ultimate Rare - $250) + custom cloth winner’s playmat 2nd place: Book of moon OP23-EN001 (Ultimate Rare - $85) 3rd/4th place: TBC A custom token to celebrate the event will be given to top 4. Spot prizes TBC will be given throughout the event Use the link below to register. Any PG playmates allowed. Any PG sleeves and double sleeves allowed. Proxies are not allowed. This event has no affiliatio",
+      "id": "926527879a821cd657d8",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Car Boot Sale",
@@ -2273,6 +3193,19 @@
       "id": "7e781449788b2ac21976",
       "venueSlug": "auckland-art-gallery",
       "checkedAt": "2026-09-25T12:09:55.820Z"
+    },
+    {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-11-01",
+      "startsAt": "2026-10-31T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "a56c01f3379d3cace76a",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Khaled Khalafalla: The Let Me Take You There Tour",
@@ -2314,6 +3247,18 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-11-01",
+      "startsAt": "2026-10-31T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "d6abbdc1f9d8c4adb776",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "BLACKCAPS v India ODI",
       "date": "2026-11-04",
       "startsAt": null,
@@ -2324,6 +3269,42 @@
       "id": "e3fbd352ada9ad1a5ad5",
       "venueSlug": "eden-park",
       "checkedAt": "2026-09-25T10:56:35.071Z"
+    },
+    {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-11-04",
+      "startsAt": "2026-11-04T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "fad3f04487cf47629a15",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-11-04",
+      "startsAt": "2026-11-04T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "accd8c4339a6f2268497",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-11-05",
+      "startsAt": "2026-11-05T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "63b8bd43435dc1ad0051",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Pictures At An Exhibition",
@@ -2338,6 +3319,31 @@
       "checkedAt": "2026-09-25T10:43:31.608Z"
     },
     {
+      "title": "Thursday Casual Commander",
+      "date": "2026-11-05",
+      "startsAt": "2026-11-05T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "a58b7bc2adbb1f87056f",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-11-06",
+      "startsAt": "2026-11-06T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "1b160eab13f74ad86ea7",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Keep The Change Unplugged 2026",
       "date": "2026-11-06",
       "startsAt": null,
@@ -2348,6 +3354,31 @@
       "id": "bfc46abb79d3a7f967c0",
       "venueSlug": "bruce-mason",
       "checkedAt": "2026-09-25T10:44:54.509Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-11-06",
+      "startsAt": "2026-11-06T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "16cb9db03944bbb8d7ed",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-11-06",
+      "startsAt": "2026-11-06T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "43305321c149ed92ce9a",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Blindspott – Stiches Single Release",
@@ -2361,6 +3392,18 @@
       "id": "6c920187885af676ed43",
       "venueSlug": "powerstation",
       "checkedAt": "2026-09-25T12:07:42.898Z"
+    },
+    {
+      "title": "Lorcana Weekly League",
+      "date": "2026-11-07",
+      "startsAt": "2026-11-07T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "d9a4a261557f5ef5aca2",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Members lectures | On Picasso, Cubism and ceramics",
@@ -2379,6 +3422,44 @@
       "checkedAt": "2026-09-25T12:09:55.820Z"
     },
     {
+      "title": "One Piece Hobby",
+      "date": "2026-11-07",
+      "startsAt": "2026-11-06T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "96e3d51eb9b85b1c33e0",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-11-07",
+      "startsAt": "2026-11-07T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "f75a7a2a5b3f41355d4a",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-11-08",
+      "startsAt": "2026-11-07T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "71ea45d01d9eded68f14",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Reverie ",
       "date": "2026-11-08",
       "startsAt": null,
@@ -2389,6 +3470,18 @@
       "id": "c2a5045efdfb7c74356e",
       "venueSlug": "auckland-town-hall",
       "checkedAt": "2026-09-25T10:43:31.608Z"
+    },
+    {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-11-08",
+      "startsAt": "2026-11-07T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "f7ec814829f8ea3a5249",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "The Band of the Royal Regiment of New Zealand Artillery",
@@ -2413,6 +3506,30 @@
       "id": "da1083393cf8bb3eb894",
       "venueSlug": "aotea-centre",
       "checkedAt": "2026-09-25T10:44:17.159Z"
+    },
+    {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-11-11",
+      "startsAt": "2026-11-11T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "bb12e3288dee9124ee0e",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-11-11",
+      "startsAt": "2026-11-11T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "05f5cd0c7fd3eccb00d5",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "yes and also no, subject to xyz, finer print applies",
@@ -2441,6 +3558,18 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-11-12",
+      "startsAt": "2026-11-12T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "77d8429b128c5cf00cbf",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-11-12",
       "startsAt": null,
@@ -2452,6 +3581,18 @@
       "id": "3c1573ad1ce3bcef5349",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Thursday Casual Commander",
+      "date": "2026-11-12",
+      "startsAt": "2026-11-12T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "361c83ae44f5e1e46106",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "yes and also no, subject to xyz, finer print applies",
@@ -2479,6 +3620,19 @@
       "checkedAt": "2026-09-26T08:12:25.153Z"
     },
     {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-11-13",
+      "startsAt": "2026-11-13T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "4e05e2eb1d74603090ff",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-11-13",
       "startsAt": null,
@@ -2492,6 +3646,18 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-11-13",
+      "startsAt": "2026-11-13T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "136d6d9a6d7aa4f1f538",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "yes and also no, subject to xyz, finer print applies",
       "date": "2026-11-13",
       "startsAt": null,
@@ -2503,6 +3669,19 @@
       "id": "c793d983aa48dd4f3c4d",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-11-13",
+      "startsAt": "2026-11-13T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "1a7df5dd3a766bd58205",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Back to the 80s",
@@ -2554,6 +3733,18 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Lorcana Weekly League",
+      "date": "2026-11-14",
+      "startsAt": "2026-11-14T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "5d8de00572fe67e49e1a",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-11-14",
       "startsAt": null,
@@ -2565,6 +3756,44 @@
       "id": "fa9bdddcf86438482df7",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-11-14",
+      "startsAt": "2026-11-13T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "e67af81ca140c9e3f19f",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-11-14",
+      "startsAt": "2026-11-14T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "eabc5d9d96e046f8b7d2",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Star Wars Unlimited Planetary Qualifier (Homeworlds)",
+      "date": "2026-11-14",
+      "startsAt": "2026-11-13T21:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/4bee07a5-7a8b-4630-9a8b-0f4064afaeb1-1789532503410.png",
+      "summary": "Come along for our Star Wars Unlimited: Homeworlds Planetary Qualifier at Card Merchant Westcity! Date: Saturday, 14th November 2026 Time: 10:00am Start, 9:30am Registration Entry: $60 Format: Premier Prizing (Actual Promos TBC): Winner: Champion Playmat & Champion Promo Finalist: Finalist Promo Card Top 4: Top 4 Promo Card Top 8: Top 8 Promo Card All participants will receive a Participation Promo card! Total Prizing and Booster Prizing TBC closer to date! ​",
+      "id": "83607e3e7371eb042e60",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "yes and also no, subject to xyz, finer print applies",
@@ -2580,6 +3809,19 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-11-15",
+      "startsAt": "2026-11-14T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "51e75fac174b65777f9d",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-11-15",
       "startsAt": null,
@@ -2591,6 +3833,18 @@
       "id": "7441c3030c6132be8a79",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-11-15",
+      "startsAt": "2026-11-14T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "b82630282ae60f0a1483",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "yes and also no, subject to xyz, finer print applies",
@@ -2712,6 +3966,30 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-11-18",
+      "startsAt": "2026-11-18T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "ded72d0522b96970b718",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-11-18",
+      "startsAt": "2026-11-18T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "d9aa9044561d515d8756",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "A Kind Of Fury",
       "date": "2026-11-19",
       "startsAt": null,
@@ -2735,6 +4013,18 @@
       "id": "c13a97af55a616791fdc",
       "venueSlug": "aotea-centre",
       "checkedAt": "2026-09-25T10:44:17.159Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-11-19",
+      "startsAt": "2026-11-19T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "778cbd666dd7e437fdb0",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Grieg’s Piano Concerto",
@@ -2778,6 +4068,18 @@
       "checkedAt": "2026-09-25T12:09:55.820Z"
     },
     {
+      "title": "Thursday Casual Commander",
+      "date": "2026-11-19",
+      "startsAt": "2026-11-19T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "ab9e369f2caa4b462b50",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "A Kind Of Fury",
       "date": "2026-11-20",
       "startsAt": null,
@@ -2813,6 +4115,19 @@
       "id": "aabf84ca9aa98830e3d3",
       "venueSlug": "auckland-town-hall",
       "checkedAt": "2026-09-25T10:43:31.608Z"
+    },
+    {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-11-20",
+      "startsAt": "2026-11-20T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "ea73ab4afba1e8ca07a1",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Marathon",
@@ -2851,6 +4166,31 @@
       "id": "bb4d5a4a962b16993f6c",
       "venueSlug": "powerstation",
       "checkedAt": "2026-09-25T12:07:42.898Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-11-20",
+      "startsAt": "2026-11-20T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "2d4b199a1e2bddf77bd0",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-11-20",
+      "startsAt": "2026-11-20T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "936dbbd3f8d1c82fdee1",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "A Kind Of Fury",
@@ -2903,6 +4243,18 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Lorcana Weekly League",
+      "date": "2026-11-21",
+      "startsAt": "2026-11-21T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "d006e1f5506362a90971",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-11-21",
       "startsAt": null,
@@ -2914,6 +4266,44 @@
       "id": "79ac9e7341bb5c963598",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-11-21",
+      "startsAt": "2026-11-20T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "71815914fd2afb6d095b",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-11-21",
+      "startsAt": "2026-11-21T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "2380d7d799e70b928aa5",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-11-22",
+      "startsAt": "2026-11-21T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "fafa72dbdcb45738705f",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Jason Owen sings John Denver & Glen Campbell",
@@ -2983,6 +4373,18 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-11-22",
+      "startsAt": "2026-11-21T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "a61267191d6e67ebef18",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Eric Idle",
       "date": "2026-11-24",
       "startsAt": null,
@@ -3033,6 +4435,30 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-11-25",
+      "startsAt": "2026-11-25T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "93688a4c3782a1b9b055",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Wednesday Night  FaB Silver Age Weekly Event",
+      "date": "2026-11-25",
+      "startsAt": "2026-11-25T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/e94d3809-3547-4027-96b7-81c9fe4fe0e3-1772497697976.png",
+      "summary": "When - Wednesday nights 7pm Entry - $15 Format - Silver Age",
+      "id": "bc76168d668e15020ddf",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Cat Power - The Greatest 20th Anniversary Tour ",
       "date": "2026-11-26",
       "startsAt": null,
@@ -3043,6 +4469,18 @@
       "id": "728a240e4d7afbc652a7",
       "venueSlug": "bruce-mason",
       "checkedAt": "2026-09-25T10:44:54.509Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-11-26",
+      "startsAt": "2026-11-26T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "6560ae69cf59c7ee4d9a",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Mahler 1",
@@ -3070,6 +4508,31 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Thursday Casual Commander",
+      "date": "2026-11-26",
+      "startsAt": "2026-11-26T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "f3b6c6ca3d571e669b18",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-11-27",
+      "startsAt": "2026-11-27T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "66d9d37cd41f84dcc0e4",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-11-27",
       "startsAt": null,
@@ -3081,6 +4544,18 @@
       "id": "413e3f49a82106f45de9",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-11-27",
+      "startsAt": "2026-11-27T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "4f65e1a039bcad7d6301",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "The Dandy Warhols",
@@ -3096,6 +4571,19 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-11-27",
+      "startsAt": "2026-11-27T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "00faee063196f2844903",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Diary of a Wimpy Kid",
       "date": "2026-11-28",
       "endDate": "2026-11-29",
@@ -3109,6 +4597,18 @@
       "checkedAt": "2026-09-25T10:44:17.159Z"
     },
     {
+      "title": "Lorcana Weekly League",
+      "date": "2026-11-28",
+      "startsAt": "2026-11-28T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "58cb44d0e604e946e56e",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-11-28",
       "startsAt": null,
@@ -3120,6 +4620,31 @@
       "id": "0d15a0cf5490930dfd80",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-11-28",
+      "startsAt": "2026-11-27T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "1eef301a15bc4d923d41",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-11-28",
+      "startsAt": "2026-11-28T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "fdef5e4bf80c10839da3",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Tunes 4 Tamariki: Kirihimete",
@@ -3148,6 +4673,19 @@
       "checkedAt": "2026-09-25T10:44:54.509Z"
     },
     {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-11-29",
+      "startsAt": "2026-11-28T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "efd0b97f61bfaced9e4f",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-11-29",
       "startsAt": null,
@@ -3159,6 +4697,18 @@
       "id": "ada3dd4566ee87908a66",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Star Wars Unlimited Sunday Weekly Play",
+      "date": "2026-11-29",
+      "startsAt": "2026-11-28T22:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/95ce7cca-5236-45cb-ac51-705b9d22765d-1772323818824.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "d2556e63d3b282bb5c83",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "BNZ Breakers",
@@ -3199,6 +4749,30 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-12-02",
+      "startsAt": "2026-12-02T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "3f595a34b1703d6673db",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-12-03",
+      "startsAt": "2026-12-03T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "790ac4067609381205f6",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Jordan Rakei",
       "date": "2026-12-03",
       "startsAt": null,
@@ -3237,6 +4811,18 @@
       "checkedAt": "2026-09-25T10:44:17.159Z"
     },
     {
+      "title": "Thursday Casual Commander",
+      "date": "2026-12-03",
+      "startsAt": "2026-12-03T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "ff4530a922ad396ede81",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Aurie Styla: Maverick Tour",
       "date": "2026-12-04",
       "startsAt": null,
@@ -3262,6 +4848,19 @@
       "checkedAt": "2026-09-26T08:12:25.153Z"
     },
     {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-12-04",
+      "startsAt": "2026-12-04T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "11612ea1af89d30381fa",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-12-04",
       "startsAt": null,
@@ -3273,6 +4872,18 @@
       "id": "d0c0083b8586adfe62d7",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-12-04",
+      "startsAt": "2026-12-04T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "6bcddf23d54bd9a69a60",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "The Blackout",
@@ -3288,6 +4899,31 @@
       "checkedAt": "2026-09-25T10:44:54.509Z"
     },
     {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-12-04",
+      "startsAt": "2026-12-04T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "83f83d7fc301e5f744fb",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Lorcana Weekly League",
+      "date": "2026-12-05",
+      "startsAt": "2026-12-05T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "89ed5d1bd888e098c86b",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Marathon",
       "date": "2026-12-05",
       "startsAt": null,
@@ -3301,6 +4937,31 @@
       "checkedAt": "2026-09-25T12:08:18.975Z"
     },
     {
+      "title": "One Piece Hobby",
+      "date": "2026-12-05",
+      "startsAt": "2026-12-04T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "cf55adf64e6b7b43bcee",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-12-05",
+      "startsAt": "2026-12-05T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "c2a136f60404b0882720",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "The Sisters of Mercy",
       "date": "2026-12-05",
       "startsAt": null,
@@ -3312,6 +4973,19 @@
       "id": "77cab6fd726049c9ee7d",
       "venueSlug": "powerstation",
       "checkedAt": "2026-09-25T12:07:42.898Z"
+    },
+    {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-12-06",
+      "startsAt": "2026-12-05T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "edf5d4d711bf5a62d9b2",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "From Stillness to Splendour",
@@ -3388,6 +5062,30 @@
       "checkedAt": "2026-09-25T12:07:42.898Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-12-09",
+      "startsAt": "2026-12-09T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "f27e2553c544256e3e38",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-12-10",
+      "startsAt": "2026-12-10T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "55b3ba99f5f72509b29d",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "The Pharcyde",
       "date": "2026-12-10",
       "startsAt": null,
@@ -3399,6 +5097,18 @@
       "id": "de237c29f2dd71fc4af8",
       "venueSlug": "powerstation",
       "checkedAt": "2026-09-25T12:07:42.898Z"
+    },
+    {
+      "title": "Thursday Casual Commander",
+      "date": "2026-12-10",
+      "startsAt": "2026-12-10T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "5ae7da55aa4fe8479623",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "BNZ Breakers",
@@ -3425,6 +5135,44 @@
       "checkedAt": "2026-09-25T10:43:31.608Z"
     },
     {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-12-11",
+      "startsAt": "2026-12-11T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "c68312f86b47ead4b257",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-12-11",
+      "startsAt": "2026-12-11T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "02827818cf155cb4ac14",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-12-11",
+      "startsAt": "2026-12-11T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "a156bd04b84240a815f4",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Chonny: A Family Gathering",
       "date": "2026-12-12",
       "startsAt": null,
@@ -3436,6 +5184,56 @@
       "id": "e4acde328b597cad36c8",
       "venueSlug": "q-theatre",
       "checkedAt": "2026-09-25T12:08:18.975Z"
+    },
+    {
+      "title": "Lorcana Weekly League",
+      "date": "2026-12-12",
+      "startsAt": "2026-12-12T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "2dac343f9336640c46c9",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-12-12",
+      "startsAt": "2026-12-11T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "b9c9546e9bd4ae7a7b3b",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-12-12",
+      "startsAt": "2026-12-12T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "5b0c82657d66cb79e1d8",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-12-13",
+      "startsAt": "2026-12-12T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "15fa546d5ac95fb5a3fd",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Handel's Messiah",
@@ -3507,6 +5305,30 @@
       "checkedAt": "2026-09-25T10:44:54.509Z"
     },
     {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-12-16",
+      "startsAt": "2026-12-16T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "cf5180896bce126878aa",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-12-17",
+      "startsAt": "2026-12-17T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "5dbade968f75023ae488",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "Guns N’ Roses",
       "date": "2026-12-17",
       "startsAt": null,
@@ -3517,6 +5339,18 @@
       "id": "7e1af6b3762352ae7f33",
       "venueSlug": "eden-park",
       "checkedAt": "2026-09-25T10:56:35.071Z"
+    },
+    {
+      "title": "Thursday Casual Commander",
+      "date": "2026-12-17",
+      "startsAt": "2026-12-17T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "881ee0e4dfb9822c07a7",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "Christmas Cheer",
@@ -3530,6 +5364,81 @@
       "id": "2b6b3376debe4d94649d",
       "venueSlug": "auckland-town-hall",
       "checkedAt": "2026-09-25T10:43:31.608Z"
+    },
+    {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-12-18",
+      "startsAt": "2026-12-18T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "8d7480eb6ae24ff41042",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-12-18",
+      "startsAt": "2026-12-18T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "c7c5cd171d33795bb750",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-12-18",
+      "startsAt": "2026-12-18T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "3ac8e91d9e5a8b260cd5",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Lorcana Weekly League",
+      "date": "2026-12-19",
+      "startsAt": "2026-12-19T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "ff1eb45dd48d5726f6dc",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-12-19",
+      "startsAt": "2026-12-18T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "ce5d02befb607c95c059",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-12-19",
+      "startsAt": "2026-12-19T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "ecdb320063163d606c16",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "The Holiday in Concert",
@@ -3548,6 +5457,19 @@
       "checkedAt": "2026-09-26T00:36:18.996Z"
     },
     {
+      "title": "Dungeons & Dragons Adventurer's League",
+      "date": "2026-12-20",
+      "startsAt": "2026-12-19T23:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/5d877471-d3aa-4fb5-9074-d0169968961e-1672532156134.png",
+      "summary": "Join us at WestCity with our weekly sessions of Dungeons & Dragons, open to all players novice or experienced!​ Ever wanted to go on an adventure into the realms of dnd? Be ready to slay dragons, work through puzzles and express your creative side through your character! When: Every Sunday Time: 12:00pm start Entry: $5.00 for Custom modules $10.00 For adventurers league - First time Free! Location: West-city Henderson First timer? We can help you create your character in-store and answer any questions you may have. We recommend you arrive at least half an hour before hand so we can get you pro",
+      "id": "82aac768128339afc828",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
       "title": "BNZ Breakers",
       "date": "2026-12-22",
       "startsAt": null,
@@ -3558,6 +5480,117 @@
       "id": "fa6171265369c3b2c81f",
       "venueSlug": "spark-arena",
       "checkedAt": "2026-09-26T08:12:25.153Z"
+    },
+    {
+      "title": "Riftbound Nexus Nights",
+      "date": "2026-12-23",
+      "startsAt": "2026-12-23T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/3df2b03b-d695-4398-a1f9-f29bbf30dd5d-1760047373872.png",
+      "summary": "Step into the Rift and join us at our weekly Riftbound Nexus Nights! When: Wednesdays, 6:30pm Entry: $15 Prizing: Everyone gets a booster pack with another booster pack added to the prize pool for the top half of players! Top 4 players will receive a Nexus Night promo pack to award the most skillful players each night, while another 5 players who are outside of the top 4 will also receive Nexus Night promo packs in a random draw!",
+      "id": "79e7f767b6acca8ddac1",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Grand Archive Hobby League",
+      "date": "2026-12-24",
+      "startsAt": "2026-12-24T05:45:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f31e4940-deda-4d29-b464-b63652f2f46f-1764044079076.png",
+      "summary": "When: Every Thursday at 6:45pm Entry: $10 Prizing: 1 booster and 1 event pack for participation. A3-0 record receives an additional 3 event packs, 2-1 or 2-0-1 records receive 2 additional event packs, any other record in top 4 receives 1 additional event pack.",
+      "id": "5af01dc430e76afd39ac",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Thursday Casual Commander",
+      "date": "2026-12-24",
+      "startsAt": "2026-12-24T05:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/0f4f50d3-b3ae-4efc-bdb5-882a37c05c64-1672527686253.png",
+      "summary": "In-store every week we have are open late Thursday night for come casual card shenanigans. ​Perfect for testing out that new deck, trading among players and picking up some sweet promos! ​Time: 6.00pm (Welcome to come on down earlier!) ​Date: Every Thursday ​Location: West City Henderson, Under the Cinema near number one shoes ​Entry: Free entry ​Prizes: If you've signed into the event through the MTG Companion App you'll receive tix for our promo prize wall! ​",
+      "id": "d8113617606bb9856f04",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Friday Night  FaB Armory",
+      "date": "2026-12-25",
+      "startsAt": "2026-12-25T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/eba44e55-5553-4ff6-8e3c-72f272f9e970-1772323006629.png",
+      "summary": "When - Friday nights 7pm Entry - $15 Format - Check our facebook event each week for this week's format - or get in touch with our team. Armory events at Card Merchant Westcity are getting a big facelift! Introducing our winning wheel Armory! How it works: On entry each person will roll our winning wheel that has 10 wedges. Your spin is what you get for your entry as well as a Gem Pack and a normal booster pack! The different spins you could land on are as follows: 1 Normal Booster Pack Gem Pack + 3 Promos 1 Normal Booster Pack 1 Gem Pack 1 Normal Pack + 3 Promos Playmat 1 Gem Pack Cold Foil P",
+      "id": "1a50653f52b9d8527b47",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Star Wars Unlimited Weekly Hobby League",
+      "date": "2026-12-25",
+      "startsAt": "2026-12-25T06:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/2fa73062-c851-433b-8d69-4d7175236f2c-1727139578133.png",
+      "summary": "$10 entry 1 booster pack + 1 tournament pack for each player.",
+      "id": "b6b53030a198f78a0310",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Yu-Gi-Oh Hobby League",
+      "date": "2026-12-25",
+      "startsAt": "2026-12-25T05:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/f7d23741-d5c0-4bb2-a254-3adc7d9b0c9c-1745646663023.png",
+      "summary": "Friday Late Night is the perfect time to get some practice in for you Yu-Gi-Oh players! When: Every Friday Time: 6.30pm Entry: $12.00 Location: West-city Henderson Each Player will gain an OTS pack upon entry with an additional OTS pack to be put into the Player's prize pool. OTS Prizing will be adjusted upon how many entrants enter each Hobby night.",
+      "id": "550fff8827c2d423de8c",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Lorcana Weekly League",
+      "date": "2026-12-26",
+      "startsAt": "2026-12-26T01:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/7df84a51-3b3b-46c7-bff5-3942b6776926-1743373209402.jpg",
+      "summary": "​​Card Merchant Westcity invites you to the magical world of Disney! ​This is our weekly constructed deck event. ​$15 entry - all players receive at least 1 Lorcana booster pack with more awarded based on event attendance. ​",
+      "id": "6c4b3b6ffbc2b3fa903c",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "One Piece Hobby",
+      "date": "2026-12-26",
+      "startsAt": "2026-12-25T22:30:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/1e225e8d-6da1-4e79-b39d-2b14e6e4f797-1768950970854.png",
+      "summary": "Come on down for some pirate slinging card chaos in One Piece Card Game weekly hobby league! Where: Card Merchant Westcity Time: 11:30am When: Every Saturday Cost $12.00 Entry Win some unique promos and packs!",
+      "id": "bc007f4541ccac0b23cb",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
+    },
+    {
+      "title": "Pokemon Kids Hobby League",
+      "date": "2026-12-26",
+      "startsAt": "2026-12-26T00:00:00.000Z",
+      "sourceUrl": "https://cardmerchant.co.nz/",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://storage.googleapis.com/binderpos-event-images/cf1a2d11-ce5e-4363-b2ba-81a5cd1b61aa-1672531308469.png",
+      "summary": "Pokemon Kids Hobby League Every Saturday! ​Our Pokemon league is up and running at West-city Card merchant, Come on down for some fun games and compete for the weekly prizes. New to the game? This is the perfect place to test your card slinging skills! ​When: Every Saturday ​Time: 1:00pm ​Location: West City Henderson ​Entry: $10 ​Prizes: A booster for everyone who enters with additional boosters and promos for top placers!! ​Format: 3 rounds with a best of 3 format, allowing 30mins per round.",
+      "id": "04d19c192b96ba94b196",
+      "venueSlug": "card-merchant-westcity",
+      "checkedAt": "2026-09-28T11:17:25.866Z"
     },
     {
       "title": "BNZ Breakers",
@@ -3619,6 +5652,20 @@
       "id": "58eefa91d38ef3b12ce1",
       "venueSlug": "tuning-fork",
       "checkedAt": "2026-09-25T09:18:25.120Z"
+    },
+    {
+      "title": "Grand Archive TCG - Ascent Auckland 2027",
+      "date": "2027-01-22",
+      "endDate": "2027-01-24",
+      "startsAt": "2027-01-21T19:00:00.000Z",
+      "sourceUrl": "https://www.eventbrite.com/e/grand-archive-tcg-ascent-auckland-2027-tickets-2001275411629",
+      "precision": "time",
+      "priceStatus": "unconfirmed",
+      "imageUrl": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1193711541%2F1035405545623%2F1%2Foriginal.20260917-012157?crop=focalpoint&fit=crop&w=940&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.5&fp-y=0.5&s=15809316b11a1a65d8088191f5b9ae61",
+      "summary": "Grand Archive returns to New Zealand for the first Ascent of the CBL season!",
+      "id": "bdc980af2ecd80f95bef",
+      "venueSlug": "grand-archive-ascent-auckland",
+      "checkedAt": "2026-09-29T08:41:52.841Z"
     },
     {
       "title": "BNZ Breakers",
@@ -4004,6 +6051,19 @@
       "checkedAt": "2026-09-25T10:56:35.071Z"
     },
     {
+      "title": "Cosmos Con 2027",
+      "date": "2027-03-13",
+      "startsAt": null,
+      "sourceUrl": "https://cosmosnz.org/cosmos-con-2027/",
+      "precision": "day",
+      "imageUrl": "https://i0.wp.com/cosmosnz.org/wp-content/uploads/2025/04/untitled-1.jpg",
+      "summary": "13 March 2027 10am-5pm Auckland Netball Centre 7 Allison Ferguson Drive, St Johns, Auckland 1072 Welcome to Cosmos Con, your local, volunteer-run anime convention where creativity and passion come …",
+      "scheduleText": "10am–5pm",
+      "id": "f3d570394daf53b11274",
+      "venueSlug": "cosmos-con-auckland",
+      "checkedAt": "2026-09-29T08:40:30.503Z"
+    },
+    {
       "title": "Bruno Mars",
       "date": "2027-03-14",
       "startsAt": null,
@@ -4274,6 +6334,25 @@
       "id": "29c7f61ce3bfb751ac02",
       "venueSlug": "bruce-mason",
       "checkedAt": "2026-09-25T10:44:54.509Z"
+    },
+    {
+      "title": "Armageddon Expo Auckland Winter 2027",
+      "date": "2027-06-05",
+      "endDate": "2027-06-07",
+      "startsAt": null,
+      "sourceUrl": "https://www.armageddonexpo.com/",
+      "precision": "day",
+      "imageUrl": "https://www.armageddonexpo.com/resources/images/sponsors/burgerking.png",
+      "summary": "Armageddon Expo Auckland Winter 2027 runs 5–7 June at Auckland Showgrounds, 10am–5pm all days.",
+      "scheduleText": "10am–5pm daily",
+      "sessionDates": [
+        "2027-06-05",
+        "2027-06-06",
+        "2027-06-07"
+      ],
+      "id": "a375825eb028b0edff3c",
+      "venueSlug": "armageddon-auckland",
+      "checkedAt": "2026-09-28T11:44:03.407Z"
     },
     {
       "title": "Warriors v TBC",

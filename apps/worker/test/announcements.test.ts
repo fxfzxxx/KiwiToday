@@ -14,10 +14,60 @@ test("Auckland Live embedded shows preserve ranges and filter venue without exec
   assert.equal(extractAnnouncements("the-civic", html.replace(/\]\}/g, ""), "https://www.aucklandlive.co.nz/venue/the-civic").length, 0);
 });
 
-test("catalog contains twenty distinct HTTPS venue entries", () => {
-  assert.equal(VENUE_SOURCES.length, 20);
-  assert.equal(new Set(VENUE_SOURCES.map((venue) => venue.slug)).size, 20);
+test("catalog contains twenty-four distinct HTTPS venue entries", () => {
+  assert.equal(VENUE_SOURCES.length, 24);
+  assert.equal(new Set(VENUE_SOURCES.map((venue) => venue.slug)).size, 24);
   assert.ok(VENUE_SOURCES.every((venue) => venue.seeds.every((url) => new URL(url).protocol === "https:")));
+});
+test("Cosmos Con extracts its official Auckland 2027 date, hours and source page", () => {
+  const html = '<h1>COSMOS CON 2027</h1><main><p>13 March 2027 10am-5pm</p><p>Auckland Netball Centre</p></main>';
+  const result = extractAnnouncements("cosmos-con-auckland", html, "https://cosmosnz.org/cosmos-con-2027/");
+  assert.equal(result.length, 1);
+  assert.equal(result[0]?.title, "Cosmos Con 2027");
+  assert.equal(result[0]?.date, "2027-03-13");
+  assert.equal(result[0]?.scheduleText, "10am–5pm");
+  assert.equal(result[0]?.sourceUrl, "https://cosmosnz.org/cosmos-con-2027/");
+  assert.equal(extractAnnouncements("cosmos-con-auckland", html.replace("2027", ""), "https://cosmosnz.org/cosmos-con-2027/").length, 0);
+});
+test("Armageddon Auckland Spring extracts only the confirmed 2026 dates and links its official announcement", () => {
+  const html = '<a href="/armageddon-updates/the-epic-expo-is-back-for-labour-weekend/">Read more</a><section><h2>AUCKLAND SPRING 2026</h2><p>October 23/24/25/26th · Auckland Showgrounds</p></section>';
+  const result = extractAnnouncements("armageddon-auckland", html, "https://www.armageddonexpo.com/");
+  assert.equal(result.length, 1);
+  assert.deepEqual(result[0], {
+    title: "Armageddon Expo Auckland Spring 2026",
+    date: "2026-10-23",
+    sourceUrl: "https://www.armageddonexpo.com/armageddon-updates/the-epic-expo-is-back-for-labour-weekend/",
+    precision: "day",
+    sessionDates: ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26"],
+    endDate: "2026-10-26",
+  });
+  assert.equal(extractAnnouncements("armageddon-auckland", html.replace("AUCKLAND SPRING 2026", "AUCKLAND SPRING"), "https://www.armageddonexpo.com/").length, 0);
+});
+test("Armageddon Auckland Winter extracts its explicit 2027 dates and daily hours", () => {
+  const html = '<main><h2>AUCKLAND WINTER 2027</h2><p>5th - 7th June at Auckland Showgrounds</p><p>10am to 5pm all days</p></main>';
+  const result = extractAnnouncements("armageddon-auckland", html, "https://www.armageddonexpo.com/");
+  assert.equal(result.length, 1);
+  assert.equal(result[0]?.title, "Armageddon Expo Auckland Winter 2027");
+  assert.equal(result[0]?.date, "2027-06-05");
+  assert.equal(result[0]?.endDate, "2027-06-07");
+  assert.equal(result[0]?.scheduleText, "10am–5pm daily");
+  assert.deepEqual(result[0]?.sessionDates, ["2027-06-05", "2027-06-06", "2027-06-07"]);
+  assert.equal(extractAnnouncements("armageddon-auckland", html.replace("2027", ""), "https://www.armageddonexpo.com/").length, 0);
+});
+test("Armageddon announcement metadata prefers its poster over social icons", () => {
+  const html = '<meta property="og:image" content="/theme/images/icons/icon_fb.png"><main><article><img src="/resources/images/picker/2026-auck-s-poster.JPG"></article></main>';
+  assert.equal(extractPageMeta(html, "https://www.armageddonexpo.com/armageddon-updates/the-epic-expo-is-back-for-labour-weekend/").imageUrl,
+    "https://www.armageddonexpo.com/resources/images/picker/2026-auck-s-poster.JPG");
+});
+test("Armageddon detail metadata retains the event's full introduction", () => {
+  const html = '<main><div class="container content"><p>Get ready for the Auckland Showgrounds event over October 23-26th.</p><p>Gaming experiences include a virtual reality arcade,<br>racing zone and esports arena.</p><p>There will be huge trading card zones and many exhibitors.</p><p>Special events include cosplay parades, K-pop showcase and trading card tournaments.</p><p>Celebrity guests include actors, game voices and animation guests.</p><p>Tickets go on sale soon.</p></div></main>';
+  const summary = extractPageMeta(html, "https://www.armageddonexpo.com/armageddon-updates/the-epic-expo-is-back-for-labour-weekend/").summary ?? "";
+  assert.match(summary, /Gaming experiences include/);
+  assert.match(summary, /arcade, racing zone/);
+  assert.match(summary, /trading card zones/);
+  assert.match(summary, /cosplay parades/);
+  assert.match(summary, /\n\n/);
+  assert.doesNotMatch(summary, /Tickets go on sale soon/);
 });
 test("page metadata keeps official HTTPS images and descriptions", () => {
   const result = extractPageMeta('<meta property="og:image" content="/media/show.jpg"><meta property="og:description" content="A full official introduction to this upcoming Auckland performance and its artists.">', "https://venue.example/shows/one");

@@ -90,8 +90,12 @@ export function normalizeJsonLdEvent(
         : null;
 
   const offers = Array.isArray(node.offers) ? node.offers : node.offers ? [node.offers] : [];
+  const offerPrice = (offer: unknown) => {
+    const record = offer as Record<string, unknown> | null;
+    return num(record?.price) ?? num(record?.lowPrice);
+  };
   const prices = offers
-    .map((o) => num((o as Record<string, unknown>)?.price))
+    .map(offerPrice)
     .filter((p): p is number => p !== null && p > 0);
 
   const url = str(node.url) ?? ctx.pageUrl;
@@ -105,7 +109,7 @@ export function normalizeJsonLdEvent(
     summary: str(node.description)?.replace(/\s+/g, " ").slice(0, 600) ?? null,
     startsAt,
     endsAt: endsAt && !Number.isNaN(endsAt.getTime()) ? endsAt : null,
-    isFree: offers.some((o) => num((o as Record<string, unknown>)?.price) === 0),
+    isFree: offers.some((offer) => offerPrice(offer) === 0),
     priceFrom: prices.length ? Math.min(...prices) : null,
     venueName: str(location?.name),
     address,

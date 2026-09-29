@@ -6,7 +6,7 @@ import type { Locale } from "@/lib/i18n";
 /** Deterministic placeholder until cover images are proxied through R2. */
 function placeholderStyle(id: string): React.CSSProperties {
   const PAIRS = [["#0B6E99", "#0E80B0"], ["#1E8A5F", "#25A472"], ["#08415C", "#0B6E99"],
-                 ["#FF6B4A", "#FF8B6E"], ["#146E7E", "#1E8A5F"], ["#0B6E99", "#1E8A5F"]];
+  ["#FF6B4A", "#FF8B6E"], ["#146E7E", "#1E8A5F"], ["#0B6E99", "#1E8A5F"]];
   let h = 0;
   for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
   const [a, b] = PAIRS[h % PAIRS.length]!;
@@ -60,8 +60,10 @@ export function EventCard({
 
       <div className="space-y-2 p-3">
         <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug"><a href={event.detailUrl ?? event.sourceUrl} onClick={(click) => click.stopPropagation()}>{title}</a></h3>
+        {event.summary ? <p className="line-clamp-2 text-[12px] leading-5 text-ink-soft">{event.summary}</p> : null}
         <div className="flex flex-wrap gap-1.5" aria-label={locale === "zh" ? "活动标签" : "Event tags"}>
           {tags.map((tag, index) => <span key={tag} className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${index === 0 ? "bg-ink/10 text-ink" : "bg-moss/10 text-moss"}`}>{tag}</span>)}
+          {event.priceStatus === "unconfirmed" ? <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-medium text-amber-900">{locale === "zh" ? "价格待确认" : "Price unconfirmed"}</span> : null}
         </div>
         <dl className="space-y-1 text-[12px] text-ink-soft">
           <div className="flex gap-1.5">

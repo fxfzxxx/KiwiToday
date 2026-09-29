@@ -9,6 +9,7 @@ export interface VenueSnapshot {
     id: string; venueSlug: string; title: string; date: string; endDate?: string;
     startsAt: string | null; sourceUrl: string; checkedAt: string;
     precision: "day" | "time";
+    priceStatus?: "unconfirmed";
     imageUrl?: string; summary?: string; scheduleText?: string; sessionDates?: string[];
   }[];
 }

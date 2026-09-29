@@ -1,5 +1,9 @@
 /** Official entry points; crawl results, not this directory, establish coverage. */
 export const VENUE_SOURCES: readonly VenueSource[] = [
+  { slug: "armageddon-auckland", name: "Auckland Showgrounds", city: "auckland", seeds: ["https://www.armageddonexpo.com/"], linkPrefixes: ["/armageddon-updates/the-epic-expo-is-back-for-labour-weekend/"], maxPages: 2 },
+  { slug: "card-merchant-westcity", name: "Card Merchant WestCity", city: "auckland", seeds: ["https://cardmerchant.co.nz/"], linkPrefixes: ["/"], maxPages: 1 },
+  { slug: "cosmos-con-auckland", name: "Auckland Netball Centre", city: "auckland", seeds: ["https://cosmosnz.org/cosmos-con-2027/"], linkPrefixes: ["/cosplay-competition-2027/"], maxPages: 1 },
+  { slug: "grand-archive-ascent-auckland", name: "Alexandra Park Raceway", city: "auckland", seeds: ["https://www.eventbrite.com/e/grand-archive-tcg-ascent-auckland-2027-tickets-2001275411629"], linkPrefixes: ["/e/grand-archive-tcg-ascent-auckland-2027-tickets-"], maxPages: 1 },
   { slug: "spark-arena", name: "Spark Arena", city: "auckland", seeds: ["https://www.sparkarena.co.nz/"], linkPrefixes: ["/all-events/"], maxPages: 12 },
   { slug: "auckland-town-hall", name: "Auckland Town Hall", city: "auckland", seeds: ["https://www.aucklandlive.co.nz/venue/auckland-town-hall"], linkPrefixes: ["/show/"], maxPages: 40 },
   { slug: "asb-waterfront", name: "ASB Waterfront Theatre", city: "auckland", seeds: ["https://www.atc.co.nz/asb-waterfront-theatre"], linkPrefixes: ["/shows/", "/2026/", "/2027/"], maxPages: 12 },

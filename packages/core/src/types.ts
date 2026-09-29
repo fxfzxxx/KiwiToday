@@ -42,6 +42,7 @@ export const eventSchema = z.object({
   /** How many sources carry this event; a proxy for "how big a deal is it". */
   sourceCount: z.number().int().min(1).default(1),
   popularity: z.number().int().min(0).default(0),
+  priceStatus: z.enum(["unconfirmed"]).optional(),
   /** Internal detail route when the app has a richer first-party page. */
   detailUrl: z.string().optional(),
   /** Publisher supplied a calendar day but no verified start time. */

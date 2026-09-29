@@ -15,17 +15,23 @@ for (const venue of VENUE_SOURCES) {
   const items = [
     ...(report?.events ?? []).map((event) => {
       const raw = (event.raw as { data?: Record<string, unknown> } | undefined)?.data;
+      const rawEnvelope = event.raw as { priceStatus?: unknown } | undefined;
       const rawImage = Array.isArray(raw?.image) ? raw?.image[0] : raw?.image;
-      const imageUrl = typeof rawImage === "string" && /^https:\/\//.test(rawImage) ? rawImage : undefined;
-      const summary = typeof raw?.description === "string" ? raw.description.replace(/\s+/g, " ").trim().slice(0, 320) : undefined;
-      return { title: event.title, date: nzDate(event.startsAt), startsAt: new Date(event.startsAt).toISOString(), sourceUrl: event.url, precision: "time" as const, ...(imageUrl ? { imageUrl } : {}), ...(summary ? { summary } : {}) };
+      const imageCandidate = event.coverImageUrl ?? rawImage;
+      const imageUrl = typeof imageCandidate === "string" && /^https:\/\//.test(imageCandidate) ? imageCandidate : undefined;
+      const summary = event.summary ?? (typeof raw?.description === "string" ? raw.description.replace(/\s+/g, " ").trim().slice(0, 320) : undefined);
+      const date = nzDate(event.startsAt);
+      const endDate = event.endsAt ? nzDate(event.endsAt) : undefined;
+      return { title: event.title, date, ...(endDate && endDate !== date ? { endDate } : {}), startsAt: new Date(event.startsAt).toISOString(), sourceUrl: event.url, precision: "time" as const, ...(rawEnvelope?.priceStatus === "unconfirmed" ? { priceStatus: "unconfirmed" as const } : {}), ...(imageUrl ? { imageUrl } : {}), ...(summary ? { summary } : {}) };
     }),
     ...(report?.dateOnlyAnnouncements ?? []).map((event) => ({ title: event.title, date: event.date, ...(event.endDate ? { endDate: event.endDate } : {}), startsAt: null, sourceUrl: event.sourceUrl, precision: "day" as const, ...(event.imageUrl ? { imageUrl: event.imageUrl } : {}), ...(event.summary ? { summary: event.summary } : {}), ...(event.scheduleText ? { scheduleText: event.scheduleText } : {}), ...(event.sessionDates?.length ? { sessionDates: event.sessionDates } : {}) })),
   ];
   const failed = report?.pages.filter((page) => page.status === "failed").length ?? 0;
-  snapshot.venues.push({ slug: venue.slug, name: venue.name, city: venue.city, url: venue.seeds[0]!, checkedAt: report?.checkedAt ?? null,
+  snapshot.venues.push({
+    slug: venue.slug, name: venue.name, city: venue.city, url: venue.seeds[0]!, checkedAt: report?.checkedAt ?? null,
     status: !report ? "pending" : items.length ? "found" : failed === report.pages.length ? "failed" : "needs-extraction",
-    pages: report?.pages.length ?? 0, failedPages: failed, truncated: report?.truncated ?? false });
+    pages: report?.pages.length ?? 0, failedPages: failed, truncated: report?.truncated ?? false
+  });
   for (const item of items) {
     if (!/^https:\/\//.test(item.sourceUrl)) continue;
     const id = createHash("sha256").update(`${venue.slug}|${item.title}|${item.date}|${item.sourceUrl}`).digest("hex").slice(0, 20);

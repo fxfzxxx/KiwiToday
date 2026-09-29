@@ -5,6 +5,10 @@ import { filterEvents } from "./filter-events";
 const snapshot = snapshotData as VenueSnapshot;
 
 const VENUE_POINTS: Record<string, { lat: number; lng: number }> = {
+  "armageddon-auckland": { lat: -36.8985, lng: 174.7984 },
+  "card-merchant-westcity": { lat: -36.8526, lng: 174.6354 },
+  "cosmos-con-auckland": { lat: -36.8884, lng: 174.8332 },
+  "grand-archive-ascent-auckland": { lat: -36.8923225, lng: 174.7762145 },
   "spark-arena": { lat: -36.8476, lng: 174.7768 },
   "auckland-town-hall": { lat: -36.8528, lng: 174.7625 },
   "asb-waterfront": { lat: -36.8415, lng: 174.7575 },
@@ -54,7 +58,7 @@ export function venueSnapshotEvents(query: ParsedEventQuery): KiwiEvent[] {
         category: inferCategory(event.title, event.summary, venue.name),
         startsAt: occurrence.startsAt,
         endsAt: null,
-        isFree: /\bfree\b/i.test(event.summary ?? ""),
+        isFree: event.priceStatus === "unconfirmed" ? false : /\bfree\b/i.test(event.summary ?? ""),
         priceFrom: null,
         currency: "NZD",
         venue: { id: event.venueSlug, name: venue.name, address: null, citySlug: "auckland", point },
@@ -65,6 +69,7 @@ export function venueSnapshotEvents(query: ParsedEventQuery): KiwiEvent[] {
         sourceName: venue.name,
         sourceCount: 1,
         popularity: 0,
+        ...(event.priceStatus ? { priceStatus: event.priceStatus } : {}),
         detailUrl: `/venues/events/${event.id}`,
         dateOnly: occurrence.dateOnly,
         ...(event.scheduleText ? { scheduleText: event.scheduleText } : {}),

@@ -16,3 +16,20 @@ test("stand-up shows are comedy, not water activities", () => {
 test("figurative deep dives are not water activities", () => {
   assert.equal(inferCategory("Members | Deep dive: Contemporary art in Aotearoa"), "arts");
 });
+
+test("anime and comic conventions have their own category", () => {
+  assert.equal(inferCategory("Overload 2026"), "comics");
+  assert.equal(inferCategory("Auckland Anime & Manga Convention"), "comics");
+  assert.equal(inferCategory("Cosplay competition"), "comics");
+  assert.equal(inferCategory("A comic voice returns with a new comedy show"), "comedy");
+});
+
+test("trading card and tabletop events have their own category", () => {
+  assert.equal(inferCategory("Pokémon TCG League Challenge"), "tabletop");
+  assert.equal(inferCategory("Magic: The Gathering Commander Night"), "tabletop");
+  assert.equal(inferCategory("Board Game Meetup"), "tabletop");
+  assert.equal(inferCategory("One Piece Hobby", "One Piece", "Come sail with us for our One Piece Card Game weekly hobby league!"), "tabletop");
+  assert.equal(inferCategory("One Piece - Extra Grand Battle for Stores 2026", "One Piece", "Come sail with us for the One Piece Extra Grand Battle."), "tabletop");
+  assert.equal(inferCategory("Dungeons & Dragons Adventurer's League"), "tabletop");
+  assert.equal(inferCategory("Riftbound Nexus Nights"), "tabletop");
+});

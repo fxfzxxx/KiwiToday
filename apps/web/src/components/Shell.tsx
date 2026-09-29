@@ -38,7 +38,7 @@ export function Shell({
   const [city, setCity] = useState(initialCity);
   const [date, setDate] = useState(initialDate);
   const [category, setCategory] = useState<string | null>(initialCategory);
-  const [venue] = useState<string | null>(initialVenue);
+  const [venue, setVenue] = useState<string | null>(initialVenue);
   const [freeOnly, setFreeOnly] = useState(false);
 
   const [events, setEvents] = useState<KiwiEvent[]>(initialEvents);
@@ -70,7 +70,7 @@ export function Shell({
     inflight.current = ctl;
     setStatus("loading");
 
-    const params = new URLSearchParams({ city, date, limit: "60" });
+    const params = new URLSearchParams({ city, date, limit: "200" });
     if (venue) params.set("venue", venue);
     if (category) params.set("category", category);
     if (freeOnly) params.set("free", "true");
@@ -104,6 +104,18 @@ export function Shell({
     () => (freeOnly ? events.filter((e) => e.isFree) : events),
     [events, freeOnly],
   );
+  const venueChips = useMemo(() => {
+    const counts = new Map<string, { name: string; count: number }>();
+    for (const event of visible) {
+      if (!event.venue) continue;
+      const current = counts.get(event.venue.id);
+      if (current) current.count += 1;
+      else counts.set(event.venue.id, { name: event.venue.name, count: 1 });
+    }
+    return [...counts.entries()]
+      .map(([slug, item]) => ({ slug, ...item }))
+      .sort((left, right) => left.name.localeCompare(right.name));
+  }, [visible]);
   const selectedVenue = venues.find((item) => item.slug === venue);
   const placeName = selectedVenue?.name ?? (locale === "zh" ? (cityInfo?.zh ?? city) : (cityInfo?.en ?? city));
   const exactDate = /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : "";
@@ -151,10 +163,8 @@ export function Shell({
           <div className="flex flex-wrap items-center gap-2.5">
             <select value={city} onChange={(event) => {
               const nextCity = event.target.value;
-              if (!venue) { setCity(nextCity); return; }
-              const params = new URLSearchParams({ city: nextCity, date });
-              if (category) params.set("category", category);
-              window.location.assign(`/?${params}`);
+              setCity(nextCity);
+              if (venue) setVenue(null);
             }} aria-label={locale === "zh" ? "选择城市" : "Select city"} className="h-9 rounded-lg border border-line bg-white px-3 text-[12px] font-semibold outline-none focus:border-sea">
               {CITIES.map((item) => <option key={item.slug} value={item.slug}>{locale === "zh" ? item.zh : item.en}</option>)}
             </select>
@@ -163,12 +173,7 @@ export function Shell({
                 venues={venues}
                 value={venue}
                 locale={locale}
-                onSelect={(nextVenue) => {
-                  const params = new URLSearchParams({ city, date });
-                  if (category) params.set("category", category);
-                  if (nextVenue) params.set("venue", nextVenue);
-                  window.location.assign(`/?${params}`);
-                }}
+                onSelect={setVenue}
               />
               <DatePicker value={exactDate} locale={locale} onSelect={setDate} />
             </div>
@@ -190,9 +195,8 @@ export function Shell({
 
       <main className={`flex ${view === "list" ? "flex-none" : "min-h-0 flex-1"} ${view === "split" ? "split-layout" : ""}`}>
         <section
-          className={`${view === "list" ? "w-full overflow-visible" : "min-h-0 overflow-y-auto"} ${
-            view === "map" ? "hidden" : view === "list" ? "w-full" : "split-events"
-          }`}
+          className={`${view === "list" ? "w-full overflow-visible" : "min-h-0 overflow-y-auto"} ${view === "map" ? "hidden" : view === "list" ? "w-full" : "split-events"
+            }`}
         >
           <div className="flex items-baseline justify-between px-4 pb-2 pt-3">
             <h1 className="text-[15px] font-semibold">
@@ -200,6 +204,21 @@ export function Shell({
             </h1>
             {status === "loading" ? <span className="text-[12px] text-ink-soft">{copy.loading}</span> : null}
           </div>
+          {venueChips.length > 0 ? (
+            <div className="flex max-w-full flex-wrap items-center gap-2 px-4 pb-3" aria-label={locale === "zh" ? "按地点筛选" : "Filter by venue"}>
+              <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[.12em] text-ink-soft">{locale === "zh" ? "地点" : "Venues"}</span>
+              <ChipGroup
+                items={[
+                  { value: "", label: `${locale === "zh" ? "全部地点" : "All venues"} (${visible.length})` },
+                  ...venueChips.map((item) => ({ value: item.slug, label: `${item.name} (${item.count})` })),
+                ]}
+                value={venue ?? ""}
+                onChange={(value) => setVenue(value || null)}
+                wrap
+                compact
+              />
+            </div>
+          ) : null}
 
           {status === "error" ? (
             <p className="px-4 py-8 text-center text-[13px] text-coral">{copy.error}</p>

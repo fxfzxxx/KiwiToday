@@ -31,9 +31,9 @@ async function loadEvents(sp: Record<string, string | string[] | undefined>) {
   const parsed = eventQuerySchema.safeParse({
     city: typeof sp.city === "string" ? sp.city : "auckland",
     venue: typeof sp.venue === "string" ? sp.venue : undefined,
-    date: typeof sp.date === "string" ? sp.date : "week",
+    date: typeof sp.date === "string" ? sp.date : typeof sp.venue === "string" ? "all" : "week",
     category: typeof sp.category === "string" ? sp.category : undefined,
-    limit: 60,
+    limit: 200,
   });
   if (!parsed.success) notFound();
   const query = parsed.data;

@@ -76,6 +76,15 @@ test("free events are detected from a zero-price offer", () => {
   assert.equal(l.priceFrom, null);
 });
 
+test("aggregate offer lowPrice is used as the starting price", () => {
+  const listing = normalizeJsonLdEvent({
+    "@type": "SportsEvent", name: "Grand Archive Ascent", startDate: "2027-01-22T08:00:00+13:00",
+    offers: { "@type": "AggregateOffer", lowPrice: "108.37", highPrice: "517.72", priceCurrency: "NZD" },
+  }, { sourceSlug: "eventbrite", pageUrl: "https://www.eventbrite.com/e/event" });
+  assert.equal(listing?.priceFrom, 108.37);
+  assert.equal(listing?.isFree, false);
+});
+
 test("a page with no JSON-LD yields nothing rather than throwing", () => {
   assert.deepEqual(extractJsonLdNodes("<html><body>nope</body></html>"), []);
 });

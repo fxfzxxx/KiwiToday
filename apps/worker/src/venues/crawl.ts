@@ -5,6 +5,7 @@ import type { NormalizedListing } from "@kiwi/core";
 import { extractJsonLdNodes, normalizeJsonLdEvent } from "../sources/jsonld";
 import type { VenueSource } from "./catalog";
 import { extractAnnouncements, extractPageMeta } from "./announcements";
+import { crawlCardMerchant } from "./card-merchant";
 
 const USER_AGENT = "KiwiTodayBot/0.1";
 export interface PageEvidence {
@@ -67,7 +68,7 @@ async function boundedBody(response: Response): Promise<string> {
       if (bytes > 2_000_000) throw new Error("page exceeds 2 MB limit");
       chunks.push(next.value);
     }
-  } finally { if (timer) clearTimeout(timer); void reader.cancel().catch(() => {}); }
+  } finally { if (timer) clearTimeout(timer); void reader.cancel().catch(() => { }); }
   return Buffer.concat(chunks).toString("utf8");
 }
 
@@ -78,6 +79,7 @@ export async function crawlVenue(source: VenueSource, options: {
   const days = options.days ?? 30;
   if (!Number.isInteger(days) || days < 1 || days > 366) throw new Error("days must be 1–366");
   if (!Number.isInteger(source.maxPages) || source.maxPages < 1 || source.maxPages > 100) throw new Error("maxPages must be 1–100");
+  if (source.slug === "card-merchant-westcity") return crawlCardMerchant(source, { now, days, fetcher: options.fetcher });
   const fetcher = options.fetcher ?? fetch;
   const report: VenueReport = { venue: source, checkedAt: now.toISOString(), days, coverage: "partial", truncated: false, events: [], pages: [], dateOnlyAnnouncements: [] };
   const policies = new Map<string, ReturnType<typeof robotsParser>>();
@@ -136,6 +138,8 @@ export async function crawlVenue(source: VenueSource, options: {
         const item = extracted.sourceUrl === url
           ? source.slug === "auckland-art-gallery"
             ? { ...extracted, ...(extracted.imageUrl ? {} : pageMeta.imageUrl ? { imageUrl: pageMeta.imageUrl } : {}) }
+            : source.slug === "armageddon-auckland"
+              ? { ...extracted, ...pageMeta, ...(extracted.summary ? { summary: extracted.summary } : {}) }
             : { ...extracted, ...pageMeta }
           : extracted;
         if ((item.endDate ?? item.date) >= localDay(now) && item.date < localDay(new Date(now.getTime() + days * 86400_000))) {
@@ -176,7 +180,10 @@ export async function crawlVenue(source: VenueSource, options: {
         if ((listing.endsAt ?? listing.startsAt) < now || listing.startsAt.getTime() >= now.getTime() + days * 86400_000) continue;
         const key = `${listing.url}|${listing.title}|${listing.startsAt.toISOString()}`;
         listing.externalId = createHash("sha256").update(key).digest("hex");
-        listing.raw = { data: node, evidence: { url, checkedAt: now.toISOString(), method: "jsonld" } };
+        const raw = { data: node, evidence: { url, checkedAt: now.toISOString(), method: "jsonld" } };
+        listing.raw = source.slug === "grand-archive-ascent-auckland" && listing.priceFrom !== null && listing.priceFrom > 0
+          ? { ...raw, priceStatus: "unconfirmed" }
+          : raw;
         events.set(key, listing);
       }
       const text = pageText(html);

@@ -15,6 +15,13 @@ function cleanText(value: string | undefined, max = 2_000): string | undefined {
   return text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
 }
 
+function cleanParagraphs(value: string | undefined, max = 2_000): string | undefined {
+  const paragraphs = value?.split(/\n+/).map((paragraph) => paragraph.replace(/[\t ]+/g, " ").trim()).filter(Boolean) ?? [];
+  const text = paragraphs.join("\n\n");
+  if (text.length < 24) return undefined;
+  return text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
+}
+
 function safeImage(raw: string | undefined, base: string): string | undefined {
   if (!raw || raw.startsWith("data:")) return undefined;
   try {
@@ -27,20 +34,32 @@ function safeImage(raw: string | undefined, base: string): string | undefined {
 /** Extract only publisher-supplied page metadata; no generated copy. */
 export function extractPageMeta(html: string, url: string): Pick<Announcement, "imageUrl" | "summary" | "scheduleText" | "sessionDates"> {
   const $ = load(html);
+  const page = new URL(url);
+  const armageddonPoster = page.hostname === "www.armageddonexpo.com" && page.pathname.startsWith("/armageddon-updates/")
+    ? $("main img[src*='/resources/images/picker/'], article img[src*='/resources/images/picker/']").first().attr("src")
+    : undefined;
   const imageUrl = safeImage(
-    $('meta[property="og:image"]').attr("content") ?? $('meta[name="twitter:image"]').attr("content") ??
+    armageddonPoster ?? $('meta[property="og:image"]').attr("content") ?? $('meta[name="twitter:image"]').attr("content") ??
     $("main img[src], article img[src]").filter((_, el) => !/logo|icon|avatar/i.test(`${$(el).attr("class") ?? ""} ${$(el).attr("alt") ?? ""}`)).first().attr("src"), url,
   );
   const showDescription = new URL(url).hostname === "www.aucklandlive.co.nz"
     ? $("section.text-content-block .content-primary p").map((_, el) => $(el).text().replace(/\s+/g, " ").trim()).get()
       .filter((text) => text.length >= 40 && !/^More information\b/i.test(text)).join(" ")
     : undefined;
+  const armageddonDescription = page.hostname === "www.armageddonexpo.com" && page.pathname.startsWith("/armageddon-updates/")
+    ? $(".container.content").first().find("p").map((_, el) => {
+      const paragraph = $(el).clone();
+      paragraph.find("br").replaceWith(" ");
+      return paragraph.text().replace(/\s+/g, " ").trim();
+    }).get()
+      .filter((text) => text.length >= 40).slice(0, 5).join("\n\n")
+    : undefined;
   const sparkDescription = new URL(url).hostname === "www.sparkarena.co.nz"
     ? [
-        $('[id^="extraInfo-"] .MuiTypography-paragraph p'),
-        $('[data-component="ContentRichTextModule"]').first().find("p"),
-      ].map((nodes) => nodes.map((_, el) => $(el).text().replace(/\s+/g, " ").trim()).get()
-        .filter((text, index, all) => text.length >= 40 && !/^Age Restrictions?:/i.test(text) && all.indexOf(text) === index).join(" ")).find(Boolean)
+      $('[id^="extraInfo-"] .MuiTypography-paragraph p'),
+      $('[data-component="ContentRichTextModule"]').first().find("p"),
+    ].map((nodes) => nodes.map((_, el) => $(el).text().replace(/\s+/g, " ").trim()).get()
+      .filter((text, index, all) => text.length >= 40 && !/^Age Restrictions?:/i.test(text) && all.indexOf(text) === index).join(" ")).find(Boolean)
     : undefined;
   const galleryHeading = $("h1,h2,h3,h4,h5").filter((_, el) => $(el).text().trim() === "Event detail").first();
   const galleryDescription = new URL(url).hostname === "www.aucklandartgallery.com" && galleryHeading.length
@@ -66,7 +85,7 @@ export function extractPageMeta(html: string, url: string): Pick<Announcement, "
     if (record["@graph"]) visitJson(record["@graph"]);
   };
   $('script[type="application/ld+json"]').each((_, el) => { try { visitJson(JSON.parse($(el).text())); } catch { /* Ignore malformed metadata. */ } });
-  const summary = [
+  const summary = cleanParagraphs(armageddonDescription) ?? [
     sparkDescription,
     showDescription,
     galleryDescription,
@@ -142,6 +161,32 @@ export function extractAnnouncements(slug: string, html: string, url: string): A
     const date = new Date(raw);
     return Number.isNaN(date.getTime()) ? undefined : new Intl.DateTimeFormat("en-NZ", { timeZone: "Pacific/Auckland", hour: "numeric", minute: "2-digit", hour12: true }).format(date);
   };
+  if (slug === "armageddon-auckland" && new URL(url).hostname === "www.armageddonexpo.com" && new URL(url).pathname === "/") {
+    const text = $("body").text().replace(/\s+/g, " ");
+    const articleUrl = $('a[href*="/armageddon-updates/the-epic-expo-is-back-for-labour-weekend/"]').first().attr("href");
+    if (/AUCKLAND SPRING 2026/i.test(text) && /October 23\/24\/25\/26th/i.test(text) && /Auckland Showgrounds/i.test(text) && articleUrl) {
+      add("Armageddon Expo Auckland Spring 2026", "2026-10-23", articleUrl, {
+        sessionDates: ["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26"],
+      });
+      const event = items.at(-1);
+      if (event) event.endDate = "2026-10-26";
+    }
+    if (/AUCKLAND WINTER 2027/i.test(text) && /5th\s*-\s*7th\s+June/i.test(text) && /Auckland Showgrounds/i.test(text) && /10am\s+to\s+5pm\s+all days/i.test(text)) {
+      add("Armageddon Expo Auckland Winter 2027", "2027-06-05", url, {
+        summary: "Armageddon Expo Auckland Winter 2027 runs 5–7 June at Auckland Showgrounds, 10am–5pm all days.",
+        scheduleText: "10am–5pm daily",
+        sessionDates: ["2027-06-05", "2027-06-06", "2027-06-07"],
+      });
+      const event = items.at(-1);
+      if (event) event.endDate = "2027-06-07";
+    }
+  }
+  if (slug === "cosmos-con-auckland" && new URL(url).hostname === "cosmosnz.org" && new URL(url).pathname === "/cosmos-con-2027/") {
+    const text = $("body").text().replace(/\s+/g, " ");
+    if (/COSMOS CON 2027/i.test(text) && /13 March 2027 10am\s*[-–]\s*5pm/i.test(text) && /Auckland Netball Centre/i.test(text)) {
+      add("Cosmos Con 2027", "2027-03-13", url, { scheduleText: "10am–5pm" });
+    }
+  }
   const galleryDate = (raw: string): { date: string; endDate?: string } | null => {
     const months: Record<string, string> = { Jan: "01", Feb: "02", Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12" };
     const match = /^(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4})(?:\s*[-–]\s*(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4}))?$/.exec(raw.trim());

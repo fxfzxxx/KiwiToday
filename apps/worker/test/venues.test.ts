@@ -58,3 +58,59 @@ test("Spark date-only announcements never become invented midnight events", asyn
   assert.equal(report.events.length, 0);
   assert.deepEqual(report.dateOnlyAnnouncements, [{ title: "Concert", date: "2026-09-30", sourceUrl: "https://venue.example/all-events/concert", precision: "day" }]);
 });
+
+test("Card Merchant maps public BinderPOS listings to Auckland events without asserting the API price", async () => {
+  const binderEvent = {
+    id: 123, title: "Pokémon Day - Free Cards & Activities!", date: "2026-09-30T00:00Z[GMT]", time: "13:00:00",
+    game: "Pokémon", buildingName: "Card Merchant Westcity", streetAddress: "7 Catherine Street",
+    city: "Auckland", zipCode: "0612", ticketPrice: 55,
+    description: "<p>Free Pokémon activities.</p>", disabled: false,
+  };
+  const fetcher = (async (input: string | URL | Request) => {
+    const url = new URL(String(input));
+    if (url.pathname === "/robots.txt") return new Response("User-agent: *\nAllow: /", { status: 200 });
+    return new Response(JSON.stringify([binderEvent]), { headers: { "content-type": "application/json" } });
+  }) as typeof fetch;
+  const report = await crawlVenue({
+    slug: "card-merchant-westcity", name: "Card Merchant WestCity", city: "auckland",
+    seeds: ["https://cardmerchant.co.nz/"], linkPrefixes: ["/"], maxPages: 1,
+  }, { now: new Date("2026-09-29T00:00:00Z"), days: 30, fetcher });
+
+  assert.equal(report.events.length, 1);
+  assert.equal(report.events[0]?.startsAt.toISOString(), "2026-09-30T00:00:00.000Z");
+  assert.equal(report.events[0]?.priceFrom, null);
+  assert.equal(report.events[0]?.isFree, false);
+  assert.equal((report.events[0]?.raw as { priceStatus: string }).priceStatus, "unconfirmed");
+  assert.equal(report.events[0]?.summary, "Free Pokémon activities.");
+  assert.equal(report.events[0]?.address, "7 Catherine Street, Auckland, 0612");
+});
+
+test("Grand Archive Eventbrite JSON-LD retains its multi-day range and marks the ticket price unconfirmed", async () => {
+  const grandArchiveEvent = {
+    "@type": "SportsEvent", name: "Grand Archive TCG - Ascent Auckland 2027",
+    startDate: "2027-01-22T08:00:00+13:00", endDate: "2027-01-24T23:00:00+13:00",
+    url: "https://www.eventbrite.com/e/grand-archive-tcg-ascent-auckland-2027-tickets-2001275411629",
+    image: "https://images.example/grand-archive.jpg", description: "Grand Archive returns to New Zealand for the first Ascent of the CBL season!",
+    location: { "@type": "Place", name: "Alexandra Park Raceway", address: { streetAddress: "Manukau Road", addressLocality: "Auckland", addressRegion: "Auckland" } },
+    offers: [{ "@type": "Offer", price: "108.37", priceCurrency: "NZD" }],
+  };
+  const fetcher = (async (input: string | URL | Request) => {
+    const url = new URL(String(input));
+    const body = url.pathname === "/robots.txt"
+      ? "User-agent: *\nAllow: /"
+      : `<script type="application/ld+json">${JSON.stringify(grandArchiveEvent)}</script>`;
+    return new Response(body, { headers: { "content-type": "text/html" } });
+  }) as typeof fetch;
+  const report = await crawlVenue({
+    slug: "grand-archive-ascent-auckland", name: "Alexandra Park Raceway", city: "auckland",
+    seeds: ["https://www.eventbrite.com/e/grand-archive-tcg-ascent-auckland-2027-tickets-2001275411629"],
+    linkPrefixes: ["/e/grand-archive-tcg-ascent-auckland-2027-tickets-"], maxPages: 1,
+  }, { now: new Date("2026-09-29T00:00:00Z"), days: 366, fetcher, delayMs: 0 });
+
+  assert.equal(report.events.length, 1);
+  assert.equal(report.events[0]?.startsAt.toISOString(), "2027-01-21T19:00:00.000Z");
+  assert.equal(report.events[0]?.endsAt?.toISOString(), "2027-01-24T10:00:00.000Z");
+  assert.equal(report.events[0]?.venueName, "Alexandra Park Raceway");
+  assert.equal(report.events[0]?.priceFrom, 108.37);
+  assert.equal((report.events[0]?.raw as { priceStatus: string }).priceStatus, "unconfirmed");
+});
