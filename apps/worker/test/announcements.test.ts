@@ -19,6 +19,19 @@ test("catalog contains twenty-four distinct HTTPS venue entries", () => {
   assert.equal(new Set(VENUE_SOURCES.map((venue) => venue.slug)).size, 24);
   assert.ok(VENUE_SOURCES.every((venue) => venue.seeds.every((url) => new URL(url).protocol === "https:")));
 });
+test("ASB Waterfront extracts date ranges only when the linked season states a year", () => {
+  const html = '<div class="banner-detail"><h2>Cabaret</h2><p>The Musical at the Kit Kat Club</p><div class="dates-location"><p>22 Sep – 25 Oct</p><p>ASB Waterfront Theatre</p></div><div class="buttons-wrapper"><a class="btn-primary" href="/whats-on/2026-season/cabaret">Cabaret</a><a href="/whats-on/2026-season/cabaret#tickets">Book Now</a></div></div>';
+  const result = extractAnnouncements("asb-waterfront", html, "https://www.atc.co.nz/asb-waterfront-theatre-events");
+  assert.equal(result.length, 1);
+  assert.deepEqual(result[0], {
+    title: "Cabaret",
+    date: "2026-09-22",
+    endDate: "2026-10-25",
+    sourceUrl: "https://www.atc.co.nz/whats-on/2026-season/cabaret",
+    precision: "day",
+  });
+  assert.equal(extractAnnouncements("asb-waterfront", html.replace("2026-season", "season"), "https://www.atc.co.nz/asb-waterfront-theatre-events").length, 0);
+});
 test("Cosmos Con extracts its official Auckland 2027 date, hours and source page", () => {
   const html = '<h1>COSMOS CON 2027</h1><main><p>13 March 2027 10am-5pm</p><p>Auckland Netball Centre</p></main>';
   const result = extractAnnouncements("cosmos-con-auckland", html, "https://cosmosnz.org/cosmos-con-2027/");
@@ -28,6 +41,46 @@ test("Cosmos Con extracts its official Auckland 2027 date, hours and source page
   assert.equal(result[0]?.scheduleText, "10am–5pm");
   assert.equal(result[0]?.sourceUrl, "https://cosmosnz.org/cosmos-con-2027/");
   assert.equal(extractAnnouncements("cosmos-con-auckland", html.replace("2027", ""), "https://cosmosnz.org/cosmos-con-2027/").length, 0);
+});
+test("Go Media event pages extract explicit match dates and kick-off times", () => {
+  const html = '<main><h1 class="event-hero-carousel-heading">Auckland FC vs Melbourne City 2026/27 Season</h1><span class="event-hero-carousel-detail"><svg><title>Event Calendar</title></svg>17 October 2026</span><span class="event-hero-carousel-detail">Go Media Stadium</span><p>Kick off 5pm</p><p>Auckland FC take on Melbourne City in a confirmed A-League home fixture.</p></main>';
+  const result = extractAnnouncements("go-media-stadium", html, "https://www.aucklandstadiums.co.nz/event/auckland-fc-vs-melbourne-city-202627-season");
+  assert.equal(result.length, 1);
+  assert.equal(result[0]?.title, "Auckland FC vs Melbourne City 2026/27 Season");
+  assert.equal(result[0]?.date, "2026-10-17");
+  assert.equal(result[0]?.scheduleText, "5pm");
+  assert.match(result[0]?.summary ?? "", /confirmed A-League home fixture/);
+  assert.equal(result[0]?.sourceUrl, "https://www.aucklandstadiums.co.nz/event/auckland-fc-vs-melbourne-city-202627-season");
+  const season = '<main><h1 class="event-hero-carousel-heading">Auckland FC 2026/2027 Home A-League Season</h1><span class="event-hero-carousel-detail"><svg><title>Event Calendar</title></svg>17 October 2026 - 08 May 2027</span></main>';
+  assert.equal(extractAnnouncements("go-media-stadium", season, "https://www.aucklandstadiums.co.nz/event/auckland-fc-20262027-home-a-league-season").length, 0);
+});
+test("Western Springs event pages extract official single-event dates", () => {
+  const html = '<main><h1>Foo Fighters - Take Cover Tour 2027</h1><div>Event Calendar22 January 2027</div><div>LocationWestern Springs Bowl</div><p>Foo Fighters return to Auckland in Jan 2027</p></main>';
+  const result = extractAnnouncements("western-springs", html, "https://www.aucklandstadiums.co.nz/event/foo-fighters-take-cover-tour-2027");
+  assert.equal(result.length, 1);
+  assert.equal(result[0]?.title, "Foo Fighters - Take Cover Tour 2027");
+  assert.equal(result[0]?.date, "2027-01-22");
+  assert.match(result[0]?.summary ?? "", /Foo Fighters return/);
+});
+test("MOTAT event pages extract published date ranges and official detail metadata", () => {
+  const html = '<meta name="description" content="Have fun with the science of friction this September!"><meta property="og:image" content="https://images.example/motat.jpg"><main><h1>September Holiday Experience</h1><div>Date &amp; Time</div><div>26 Sep - 11 Oct 2026</div><div>Location MOTAT</div></main>';
+  const result = extractAnnouncements("motat", html, "https://motat.nz/events/septemebr-holiday-experience-2026/");
+  assert.equal(result.length, 1);
+  assert.equal(result[0]?.title, "September Holiday Experience");
+  assert.equal(result[0]?.date, "2026-09-26");
+  assert.equal(result[0]?.endDate, "2026-10-11");
+  assert.equal(result[0]?.imageUrl, "https://images.example/motat.jpg");
+  assert.match(result[0]?.summary ?? "", /science of friction/);
+});
+test("Basement What's On extracts fixed future show ranges and skips undated weekly repeats", () => {
+  const html = '<div class="tw-col"><h2>October</h2><a href="/blogs/whats-on/a-becoming"><div><img src="//basementtheatre.co.nz/cdn/show.jpg"><h3>A Becoming</h3><h3>1-3 OCT, 6:30PM</h3></div></a><a href="/blogs/whats-on/bull-rush-2026"><div><h3>Bull Rush</h3><h3>Every Friday, 10PM</h3></div></a></div>';
+  const result = extractAnnouncements("basement-theatre", html, "https://basementtheatre.co.nz/blogs/whats-on");
+  assert.equal(result.length, 1);
+  assert.equal(result[0]?.title, "A Becoming");
+  assert.equal(result[0]?.date, "2026-10-01");
+  assert.equal(result[0]?.endDate, "2026-10-03");
+  assert.equal(result[0]?.scheduleText, "6:30PM");
+  assert.equal(result[0]?.imageUrl, "https://basementtheatre.co.nz/cdn/show.jpg");
 });
 test("Armageddon Auckland Spring extracts only the confirmed 2026 dates and links its official announcement", () => {
   const html = '<a href="/armageddon-updates/the-epic-expo-is-back-for-labour-weekend/">Read more</a><section><h2>AUCKLAND SPRING 2026</h2><p>October 23/24/25/26th · Auckland Showgrounds</p></section>';

@@ -6,6 +6,7 @@ import { extractJsonLdNodes, normalizeJsonLdEvent } from "../sources/jsonld";
 import type { VenueSource } from "./catalog";
 import { extractAnnouncements, extractPageMeta } from "./announcements";
 import { crawlCardMerchant } from "./card-merchant";
+import { crawlEventfindaStadium } from "./eventfinda-stadium";
 
 const USER_AGENT = "KiwiTodayBot/0.1";
 export interface PageEvidence {
@@ -80,6 +81,7 @@ export async function crawlVenue(source: VenueSource, options: {
   if (!Number.isInteger(days) || days < 1 || days > 366) throw new Error("days must be 1–366");
   if (!Number.isInteger(source.maxPages) || source.maxPages < 1 || source.maxPages > 100) throw new Error("maxPages must be 1–100");
   if (source.slug === "card-merchant-westcity") return crawlCardMerchant(source, { now, days, fetcher: options.fetcher });
+  if (source.slug === "eventfinda-stadium") return crawlEventfindaStadium(source, { now, days, fetcher: options.fetcher });
   const fetcher = options.fetcher ?? fetch;
   const report: VenueReport = { venue: source, checkedAt: now.toISOString(), days, coverage: "partial", truncated: false, events: [], pages: [], dateOnlyAnnouncements: [] };
   const policies = new Map<string, ReturnType<typeof robotsParser>>();
@@ -96,8 +98,11 @@ export async function crawlVenue(source: VenueSource, options: {
     const controller = new AbortController();
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
+      const userAgent = source.slug === "basement-theatre"
+        ? "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36"
+        : USER_AGENT;
       return await Promise.race([
-        fetcher(url, { redirect: "manual", signal: controller.signal, headers: { "user-agent": USER_AGENT } }),
+        fetcher(url, { redirect: "manual", signal: controller.signal, headers: { "user-agent": userAgent, accept: "text/html,application/xhtml+xml" } }),
         new Promise<never>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new Error("request timed out")); }, Math.max(1, Math.min(20_000, deadline - Date.now()))); }),
       ]);
     } finally { if (timer) clearTimeout(timer); }
@@ -129,6 +134,20 @@ export async function crawlVenue(source: VenueSource, options: {
       const html = await boundedBody(response);
       const localDay = (date: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Pacific/Auckland", year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
       const pageMeta = extractPageMeta(html, url);
+      if (source.slug === "auckland-zoo" && new URL(url).pathname === "/visit/education-session-dinosaur-discovery") {
+        const zooPage = load(html);
+        const text = zooPage("main").text().replace(/\s+/g, " ");
+        if (/Open 9:30am\s*-\s*4pm daily\s+from 10 June 2026/i.test(text)) {
+          const firstDay = new Date("2026-06-10T12:00:00Z");
+          const start = firstDay > now ? firstDay : now;
+          const sessionDates = Array.from({ length: days }, (_, offset) => localDay(new Date(start.getTime() + offset * 86_400_000)));
+          report.dateOnlyAnnouncements.push({
+            title: zooPage("h1").first().text().replace(/\s+/g, " ").trim() || "Dinosaur Discovery Track",
+            date: localDay(start), endDate: sessionDates.at(-1), sourceUrl: url, precision: "day",
+            sessionDates, scheduleText: "9:30am–4pm daily", ...pageMeta,
+          });
+        }
+      }
       for (const existing of report.dateOnlyAnnouncements) {
         if (existing.sourceUrl === url) Object.assign(existing,
           source.slug === "auckland-art-gallery" ? (pageMeta.imageUrl ? { imageUrl: pageMeta.imageUrl } : {}) : pageMeta,

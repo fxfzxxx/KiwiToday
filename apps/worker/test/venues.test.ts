@@ -114,3 +114,33 @@ test("Grand Archive Eventbrite JSON-LD retains its multi-day range and marks the
   assert.equal(report.events[0]?.priceFrom, 108.37);
   assert.equal((report.events[0]?.raw as { priceStatus: string }).priceStatus, "unconfirmed");
 });
+
+test("Auckland Zoo keeps an explicit daily activity as recurring sessions", async () => {
+  const fetcher = (async (input: string | URL | Request) => {
+    const url = String(input);
+    const body = url.endsWith("robots.txt")
+      ? "User-agent: *\nAllow: /"
+      : "<main><h1>Dinosaur Discovery Session</h1><p>Open 9:30am - 4pm daily from 10 June 2026.</p></main>";
+    return new Response(body, { headers: { "content-type": "text/html" } });
+  }) as typeof fetch;
+  const report = await crawlVenue({
+    slug: "auckland-zoo", name: "Auckland Zoo", city: "auckland",
+    seeds: ["https://www.aucklandzoo.co.nz/visit/education-session-dinosaur-discovery"],
+    linkPrefixes: ["/"], maxPages: 1,
+  }, { now: new Date("2026-09-30T00:00:00Z"), days: 3, fetcher, delayMs: 0 });
+
+  assert.equal(report.dateOnlyAnnouncements.length, 1);
+  assert.equal(report.dateOnlyAnnouncements[0]?.date, "2026-09-30");
+  assert.deepEqual(report.dateOnlyAnnouncements[0]?.sessionDates, ["2026-09-30", "2026-10-01", "2026-10-02"]);
+  assert.equal(report.dateOnlyAnnouncements[0]?.scheduleText, "9:30am–4pm daily");
+});
+
+test("Eventfinda Stadium maps its public VenueIQ feed into timed activities", async () => {
+  const feed = [{ id: 757, title: "BX-9 Vol. 7", start: "2026-10-02T11:00:00.000Z", end: "2026-10-02T11:00:00.000Z", imageUrl: "https://images.example/bx9.png", ticketsUrl: "https://www.eventfinda.co.nz/event/bx9", locationName: "Eventfinda Stadium", locationAddress: "17 Silverfield" }];
+  const fetcher = (async () => new Response(JSON.stringify({ events: feed }), { headers: { "content-type": "application/json" } })) as typeof fetch;
+  const report = await crawlVenue({ slug: "eventfinda-stadium", name: "Eventfinda Stadium", city: "auckland", seeds: ["https://www.eventfindastadium.co.nz/upcoming"], linkPrefixes: ["/"], maxPages: 1 }, { now: new Date("2026-09-30T00:00:00Z"), days: 30, fetcher });
+  assert.equal(report.events.length, 1);
+  assert.equal(report.events[0]?.title, "BX-9 Vol. 7");
+  assert.equal(report.events[0]?.startsAt.toISOString(), "2026-10-02T11:00:00.000Z");
+  assert.equal(report.events[0]?.venueName, "Eventfinda Stadium");
+});
